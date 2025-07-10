@@ -1,4 +1,5 @@
 @extends('front.master')
+@section('title', 'Home')
 @section('content')
      <!-- slider-start -->
     <div class="slider-area pos-relative">
