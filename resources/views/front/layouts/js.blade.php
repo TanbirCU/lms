@@ -18,3 +18,4 @@
     <script src="{{asset('/assets/front/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{asset('/assets/front/js/plugins.js')}}"></script>
     <script src="{{asset('/assets/front/js/main.js')}}"></script>
+    @stack('js')

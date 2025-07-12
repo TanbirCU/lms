@@ -855,34 +855,5 @@
         </div>
     </div>
     <!-- brand end -->
-    <!-- subscribe start -->
-    <div class="subscribe-area">
-        <div class="container">
-            <div class="subscribe-box">
-                <div class="row">
-                    <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-12">
-                        <div class="row">
-                            <div class="col-xl-7 col-lg-7 col-md-8">
-                                <div class="subscribe-text">
-                                    <h1>Subscribe</h1>
-                                    <span>Enter your email and get latest updates and offers subscribe us</span>
-                                </div>
-                            </div>
-                            <div class="col-xl-5 col-lg-5 col-md-4">
-                                <div class="email-submit-form">
-                                    <div class="subscribe-form">
-                                        <form action="#">
-                                            <input placeholder="Enter your email" type="email">
-                                            <i class="fas fa-long-arrow-alt-right"></i>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- subscribe end -->
+    
 @endsection
