@@ -38,8 +38,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-md-6 col-6">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="img/logo/logo.png" alt="">
+                                <a href="{{ route('home') }}">
+                                    <img src="{{ asset('/assets/front/img/logo/logo.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <nav id="mobile-menu" style="display: block;">
                                     <ul>
                                         <li>
-                                            <a href="#home">Home</a>
+                                            <a href="{{ route('home') }}">Home</a>
                                             <ul class="submenu">
                                                 <li>
                                                     <a href="index.html">Home style 1</a>

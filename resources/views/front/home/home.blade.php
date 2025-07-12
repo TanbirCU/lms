@@ -4,7 +4,7 @@
      <!-- slider-start -->
     <div class="slider-area pos-relative">
         <div class="slider-active">
-            <div class="single-slider slider-height d-flex align-items-center" style="background-image: url(img/slider/slider_bg_001.jpg)">
+            <div class="single-slider slider-height d-flex align-items-center" style="background-image: url({{asset('/assets/front/img/slider/slider_bg_001.jpg')}})">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-md-12">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slider slider-height d-flex align-items-center" style="background-image: url(img/slider/slider_bg_002.jpg)">
+            <div class="single-slider slider-height d-flex align-items-center" style="background-image: url({{asset('/assets/front/img/slider/slider_bg_002.jpg')}})">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-md-12">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-slider slider-height d-flex align-items-center" style="background-image: url(img/slider/slider_bg_001.jpg)">
+            <div class="single-slider slider-height d-flex align-items-center" style="background-image: url({{asset('/assets/front/img/slider/slider_bg_001.jpg')}})">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-md-12">
@@ -66,10 +66,10 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="courses-wrapper mb-30">
                             <div class="courses-thumb">
-                                <a href="course_details.html"><img src="img/courses/coursesthumb001.jpg" alt=""></a>
+                                <a href="course_details.html"><img src="{{asset('/assets/front/img/courses/coursesthumb001.jpg')}}" alt=""></a>
                             </div>
                             <div class="courses-author-2 text-center">
-                                <img src="img/courses/coursesauthor1.png" alt="">
+                                <img src="{{asset('/assets/front/img/courses/coursesauthor1.png')}}" alt="">
                             </div>
                             <div class="courses-content courses-content-2 text-center">
                                 <div class="courses-heading text-center">
@@ -107,10 +107,10 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="courses-wrapper mb-30">
                             <div class="courses-thumb">
-                                <a href="course_details.html"><img src="img/courses/coursesthumb002.jpg" alt=""></a>
+                                <a href="course_details.html"><img src="{{asset('/assets/front/img/courses/coursesthumb002.jpg')}}" alt=""></a>
                             </div>
                             <div class="courses-author-2 text-center">
-                                <img src="img/courses/coursesauthor2.png" alt="">
+                                <img src="{{asset('/assets/front/img/courses/coursesauthor2.png')}}" alt="">
                             </div>
                             <div class="courses-content courses-content-2 text-center">
                                 <div class="courses-heading text-center">
@@ -148,10 +148,10 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="courses-wrapper mb-30">
                             <div class="courses-thumb">
-                                <a href="course_details.html"><img src="img/courses/coursesthumb003.jpg" alt=""></a>
+                                <a href="course_details.html"><img src="{{asset('/assets/front/img/courses/coursesthumb003.jpg')}}" alt=""></a>
                             </div>
                             <div class="courses-author-2 text-center">
-                                <img src="img/courses/coursesauthor3.png" alt="">
+                                <img src="{{asset('/assets/front/img/courses/coursesauthor3.png')}}" alt="">
                             </div>
                             <div class="courses-content courses-content-2 text-center">
                                 <div class="courses-heading text-center">
@@ -189,10 +189,10 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="courses-wrapper mb-30">
                             <div class="courses-thumb">
-                                <a href="course_details.html"><img src="img/courses/coursesthumb004.jpg" alt=""></a>
+                                <a href="course_details.html"><img src="{{asset('/assets/front/img/courses/coursesthumb004.jpg')}}" alt=""></a>
                             </div>
                             <div class="courses-author-2 text-center">
-                                <img src="img/courses/coursesauthor1.png" alt="">
+                                <img src="{{asset('/assets/front/img/courses/coursesauthor1.png')}}" alt="">
                             </div>
                             <div class="courses-content courses-content-2 text-center">
                                 <div class="courses-heading text-center">
@@ -233,7 +233,7 @@
     </div>
     <!-- courses end -->
     <!-- events start -->
-    <div id="events" class="events-area events-bg-height pt-100 pb-70" style="background-image: url(img/courses/courses_bg.png)">
+    <div id="events" class="events-area events-bg-height pt-100 pb-70" style="background-image: url({{asset('/assets/front/img/courses/courses_bg.png')}})">
         <div class="container">
             <div class="events-list">
                 <div class="row">
@@ -246,7 +246,7 @@
                                         <span>Fillup the form</span>
                                     </div>
                                     <div class="events-registration-form-heading-icon">
-                                        <img src="img/events/events-registration-form-icon.png" alt="">
+                                        <img src="{{asset('/assets/front/img/events/events-registration-form-icon.png')}}" alt="">
                                     </div>
                                 </div>
                                 <div class="events-registration-main-form">
@@ -281,7 +281,7 @@
                             <div class="events-wrapper">
                                 <div class="events-inner d-flex">
                                     <div class="events-thumb">
-                                        <img src="img/events/events_001.png" alt="">
+                                        <img src="{{asset('/assets/front/img/events/events_001.png')}}" alt="">
                                     </div>
                                     <div class="events-text events-text-2 white-bg">
                                         <div class="event-text-heading d-flex mb-20">
@@ -313,7 +313,7 @@
                             <div class="events-wrapper">
                                 <div class="events-inner d-flex">
                                     <div class="events-thumb">
-                                        <img src="img/events/events_002.png" alt="">
+                                        <img src="{{asset('/assets/front/img/events/events_002.png')}}" alt="">
                                     </div>
                                     <div class="events-text events-text-2 white-bg">
                                         <div class="event-text-heading d-flex mb-20">
@@ -367,7 +367,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="team-wrapper team-wrapper-2 mb-30">
                             <div class="team-thumb">
-                                <img src="img/team/teamthumb001.jpg" alt="">
+                                <img src="{{asset('/assets/front/img/team/teamthumb001.jpg')}}" alt="">
                             </div>
                             <div class="team-social-info text-center">
                                 <div class="team-social-icon-list">
@@ -388,7 +388,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="team-wrapper team-wrapper-2 mb-30">
                             <div class="team-thumb">
-                                <img src="img/team/teamthumb002.jpg" alt="">
+                                <img src="{{asset('/assets/front/img/team/teamthumb002.jpg')}}" alt="">
                             </div>
                             <div class="team-social-info text-center">
                                 <div class="team-social-icon-list">
@@ -409,7 +409,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="team-wrapper team-wrapper-2 mb-30">
                             <div class="team-thumb">
-                                <img src="img/team/teamthumb003.jpg" alt="">
+                                <img src="{{asset('/assets/front/img/team/teamthumb003.jpg')}}" alt="">
                             </div>
                             <div class="team-social-info text-center">
                                 <div class="team-social-icon-list">
@@ -430,7 +430,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-6">
                         <div class="team-wrapper team-wrapper-2 mb-30">
                             <div class="team-thumb">
-                                <img src="img/team/teamthumb004.jpg" alt="">
+                                <img src="{{asset('/assets/front/img/team/teamthumb004.jpg')}}" alt="">
                             </div>
                             <div class="team-social-info text-center">
                                 <div class="team-social-icon-list">
@@ -459,28 +459,28 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="img/counter/counter_icon1.png" alt="">
+                        <img src="{{asset('/assets/front/img/counter/counter_icon1.png')}}" alt="">
                         <span class="counter">10532</span>
                         <h3>Satisfied Students</h3>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="img/counter/counter_icon2.png" alt="">
+                        <img src="{{asset('/assets/front/img/counter/counter_icon2.png')}}" alt="">
                         <span class="counter">7985</span>
                         <h3>Courses Complated</h3>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="img/counter/counter_icon3.png" alt="">
+                        <img src="{{asset('/assets/front/img/counter/counter_icon3.png')}}" alt="">
                         <span class="counter">5382</span>
                         <h3>Satisfied Students</h3>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="couter-wrapper mb-30 text-center">
-                        <img src="img/counter/counter_icon4.png" alt="">
+                        <img src="{{asset('/assets/front/img/counter/counter_icon4.png')}}" alt="">
                         <span class="counter">354</span>
                         <h3>Expert Advisors</h3>
                     </div>
@@ -513,7 +513,7 @@
                             </div>
                             <div class="testimonilas-heading d-flex">
                                 <div class="testimonilas-author-thumb">
-                                    <img src="img/testimonials/testimonilas_author_thumb1.png" alt="">
+                                    <img src="{{asset('/assets/front/img/testimonials/testimonilas_author_thumb1.png')}}" alt="">
                                 </div>
                                 <div class="testimonilas-author-title">
                                     <h1>Lisa McClanahan</h1>
@@ -529,7 +529,7 @@
                             </div>
                             <div class="testimonilas-heading d-flex">
                                 <div class="testimonilas-author-thumb">
-                                    <img src="img/testimonials/testimonilas_author_thumb1.png" alt="">
+                                    <img src="{{asset('/assets/front/img/testimonials/testimonilas_author_thumb1.png')}}" alt="">
                                 </div>
                                 <div class="testimonilas-author-title">
                                     <h1>Lisa McClanahan</h1>
@@ -545,7 +545,7 @@
                             </div>
                             <div class="testimonilas-heading d-flex">
                                 <div class="testimonilas-author-thumb">
-                                    <img src="img/testimonials/testimonilas_author_thumb1.png" alt="">
+                                    <img src="{{asset('/assets/front/img/testimonials/testimonilas_author_thumb1.png')}}" alt="">
                                 </div>
                                 <div class="testimonilas-author-title">
                                     <h1>Lisa McClanahan</h1>
@@ -561,7 +561,7 @@
                             </div>
                             <div class="testimonilas-heading d-flex">
                                 <div class="testimonilas-author-thumb">
-                                    <img src="img/testimonials/testimonilas_author_thumb1.png" alt="">
+                                    <img src="{{asset('/assets/front/img/testimonials/testimonilas_author_thumb1.png')}}" alt="">
                                 </div>
                                 <div class="testimonilas-author-title">
                                     <h1>Lisa McClanahan</h1>
@@ -576,7 +576,7 @@
     </div>
     <!-- testimonials end -->
     <!-- shop stat -->
-    <div id="shop" class="shop-area pt-100 pb-70" style="background-image: url(img/shop/shop_bg.jpg);">
+    <div id="shop" class="shop-area pt-100 pb-70" style="background-image: url({{asset('/assets/front/img/shop/shop_bg.jpg')}});">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1">
@@ -595,7 +595,7 @@
                     <div class="col-xl-12">
                         <div class="shop-inner mb-30 white-bg">
                             <div class="shop-thumb">
-                                <a href="shop_pages.html"><img src="img/shop/shopthumb001.jpg" alt=""></a>
+                                <a href="shop_pages.html"><img src="{{asset('/assets/front/img/shop/shopthumb001.jpg')}}" alt=""></a>
                             </div>
                             <div class="book-inner-content">
                                 <div class="sohop-heading mb-20">
@@ -623,7 +623,7 @@
                     <div class="col-xl-12">
                         <div class="shop-inner mb-30 white-bg">
                             <div class="shop-thumb">
-                                <a href="shop_pages.html"><img src="img/shop/shopthumb002.jpg" alt=""></a>
+                                <a href="shop_pages.html"><img src="{{asset('/assets/front/img/shop/shopthumb002.jpg')}}" alt=""></a>
                             </div>
                             <div class="book-inner-content">
                                 <div class="sohop-heading mb-20">
@@ -651,7 +651,7 @@
                     <div class="col-xl-12">
                         <div class="shop-inner mb-30 white-bg">
                             <div class="shop-thumb">
-                                <a href="shop_pages.html"><img src="img/shop/shopthumb003.jpg" alt=""></a>
+                                <a href="shop_pages.html"><img src="{{asset('/assets/front/img/shop/shopthumb003.jpg')}}" alt=""></a>
                             </div>
                             <div class="book-inner-content">
                                 <div class="sohop-heading mb-20">
@@ -679,7 +679,7 @@
                     <div class="col-xl-12">
                         <div class="shop-inner mb-30 white-bg">
                             <div class="shop-thumb">
-                                <a href="shop_pages.html"><img src="img/shop/shopthumb004.jpg" alt=""></a>
+                                <a href="shop_pages.html"><img src="{{asset('/assets/front/img/shop/shopthumb004.jpg')}}" alt=""></a>
                             </div>
                             <div class="book-inner-content">
                                 <div class="sohop-heading mb-20">
@@ -707,7 +707,7 @@
                     <div class="col-xl-12">
                         <div class="shop-inner mb-30 white-bg">
                             <div class="shop-thumb">
-                                <a href="shop_pages.html"><img src="img/shop/shopthumb002.jpg" alt=""></a>
+                                <a href="shop_pages.html"><img src="{{asset('/assets/front/img/shop/shopthumb002.jpg')}}" alt=""></a>
                             </div>
                             <div class="book-inner-content">
                                 <div class="sohop-heading mb-20">
@@ -756,7 +756,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="blog-wrapper mb-30">
                         <div class="blog-thumb mb-25">
-                            <a href="news_details.html"><img src="img/blog/blog_thumb_1.jpg" alt=""></a>
+                            <a href="news_details.html"><img src="{{asset('/assets/front/img/blog/blog_thumb_1.jpg')}}" alt=""></a>
                             <span class="blog-category">news</span>
                         </div>
                         <div class="blog-content">
@@ -782,7 +782,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="blog-wrapper mb-30">
                         <div class="blog-thumb mb-25">
-                            <a href="news_details.html"><img src="img/blog/blog_thumb_2.jpg" alt=""></a>
+                            <a href="news_details.html"><img src="{{asset('/assets/front/img/blog/blog_thumb_2.jpg')}}" alt=""></a>
                             <span class="blog-category">news</span>
                         </div>
                         <div class="blog-content">
@@ -808,7 +808,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="blog-wrapper mb-30">
                         <div class="blog-thumb mb-25">
-                            <a href="news_details.html"><img src="img/blog/blog_thumb_3.jpg" alt=""></a>
+                            <a href="news_details.html"><img src="{{asset('/assets/front/img/blog/blog_thumb_3.jpg')}}" alt=""></a>
                             <span class="blog-category">news</span>
                         </div>
                         <div class="blog-content">
@@ -842,12 +842,12 @@
                 <div class="col-xl-12">
                     <div class="brand-list">
                         <ul>
-                            <li><img src="img/brand/brand1.png" alt=""></li>
-                            <li><img src="img/brand/brand2.png" alt=""></li>
-                            <li><img src="img/brand/brand3.png" alt=""></li>
-                            <li><img src="img/brand/brand4.png" alt=""></li>
-                            <li><img src="img/brand/brand5.png" alt=""></li>
-                            <li><img src="img/brand/brand6.png" alt=""></li>
+                            <li><img src="{{asset('/assets/front/img/brand/brand1.png')}}" alt=""></li>
+                            <li><img src="{{asset('/assets/front/img/brand/brand2.png')}}" alt=""></li>
+                            <li><img src="{{asset('/assets/front/img/brand/brand3.png')}}" alt=""></li>
+                            <li><img src="{{asset('/assets/front/img/brand/brand4.png')}}" alt=""></li>
+                            <li><img src="{{asset('/assets/front/img/brand/brand5.png')}}" alt=""></li>
+                            <li><img src="{{asset('/assets/front/img/brand/brand6.png')}}" alt=""></li>
                         </ul>
                     </div>
                 </div>
