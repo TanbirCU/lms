@@ -835,25 +835,5 @@
         </div>
     </div>
     <!-- latest_blog end -->
-    <!-- brand start -->
-    <div class="brand-area pt-80 pt-80 pb-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="brand-list">
-                        <ul>
-                            <li><img src="{{asset('/assets/front/img/brand/brand1.png')}}" alt=""></li>
-                            <li><img src="{{asset('/assets/front/img/brand/brand2.png')}}" alt=""></li>
-                            <li><img src="{{asset('/assets/front/img/brand/brand3.png')}}" alt=""></li>
-                            <li><img src="{{asset('/assets/front/img/brand/brand4.png')}}" alt=""></li>
-                            <li><img src="{{asset('/assets/front/img/brand/brand5.png')}}" alt=""></li>
-                            <li><img src="{{asset('/assets/front/img/brand/brand6.png')}}" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- brand end -->
-    
+   
 @endsection
