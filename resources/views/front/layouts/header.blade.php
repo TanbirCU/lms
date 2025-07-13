@@ -113,21 +113,8 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="course_01.html">Courses</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="course_01.html">Courses 01</a>
-                                                </li>
-                                                <li>
-                                                    <a href="course_02.html">Courses 02</a>
-                                                </li>
-                                                <li>
-                                                    <a href="course_03.html">Courses 03</a>
-                                                </li>
-                                                <li>
-                                                    <a href="course_details.html">Course Details</a>
-                                                </li>
-                                            </ul>
+                                            <a href="{{ route('course') }}">Courses</a>
+
                                         </li>
                                         <li>
                                             <a href="events_01.html">NEWS</a>
