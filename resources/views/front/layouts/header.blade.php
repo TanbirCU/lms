@@ -66,69 +66,20 @@
                                     <ul>
                                         <li>
                                             <a href="{{ route('home') }}">Home</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="index.html">Home style 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index_2.html">Home style 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index_3.html">Home style 3</a>
-                                                </li>
-                                            </ul>
+                                            
                                         </li>
                                         <li>
-                                            <a href="#about">PAGES</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="about_us.html">About Us</a>
-                                                </li>
-                                                <li>
-                                                    <a href="advisors.html">Advisors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="advisors_details.html">Advisors Details</a>
-                                                </li>
-                                                <li>
-                                                    <a href="faq.html">FAQ</a>
-                                                </li>
-                                            </ul>
+                                            <a href="{{ route('about') }}">ABOUT US</a>
+
                                         </li>
-                                        <li>
-                                            <a href="#about">ELEMENTS</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="events_01.html">Events 01</a>
-                                                </li>
-                                                <li>
-                                                    <a href="events_02.html">Events 02</a>
-                                                </li>
-                                                <li>
-                                                    <a href="event_details.html">Events Details</a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop_pages.html">Shop</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        
                                         <li>
                                             <a href="{{ route('course') }}">Courses</a>
 
                                         </li>
+                                       
                                         <li>
-                                            <a href="events_01.html">NEWS</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="grid_news.html">Blog 3 Column</a>
-                                                </li>
-                                                <li>
-                                                    <a href="standard_blog.html">Blog Sidebar</a>
-                                                </li>
-                                                <li>
-                                                    <a href="news_details.html">Blog Details</a>
-                                                </li>
-                                            </ul>
+                                            <a href="{{ route('events') }}">EVENTS</a>
                                         </li>
                                         <li>
                                             <a href="{{ route('contact') }}">CONTACT</a>

@@ -3,7 +3,7 @@
 @section('content')
 
       <!-- slider-start -->
-    <div class="slider-area">
+    {{-- <div class="slider-area">
         <div class="page-title">
             <div class="single-slider slider-height slider-height-breadcrumb d-flex align-items-center" style="background-image: url({{ asset('/assets/front/img/bg/others_bg.jpg') }});">
                 <div class="container">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- slider-end -->
     <!-- courses start -->
     <div class="courses-area courses-bg-height gray-bg pt-100 pb-70">

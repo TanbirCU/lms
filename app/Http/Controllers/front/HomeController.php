@@ -20,4 +20,13 @@ class HomeController extends Controller
     {
         return view('front.course.course');
     }
+    public function events()
+    {
+        return view('front.events.events');
+    }
+
+    public function about()
+    {
+        return view('front.about.about');
+    }
 }
