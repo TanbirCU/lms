@@ -21,3 +21,21 @@ Route::get('/events', [HomeController::class, 'events'])->name('events');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 
+
+// Route::prefix('student')->group(function () {
+//     Route::get('/login', [StudentLoginController::class, 'showLoginForm'])->name('student.login');
+//     Route::post('/login', [StudentLoginController::class, 'login']);
+//     Route::middleware('auth:student')->get('/dashboard', function () {
+//         return 'Student Dashboard';
+//     });
+// });
+
+// Route::prefix('teacher')->group(function () {
+//     Route::get('/login', [TeacherLoginController::class, 'showLoginForm'])->name('teacher.login');
+//     Route::post('/login', [TeacherLoginController::class, 'login']);
+//     Route::middleware('auth:teacher')->get('/dashboard', function () {
+//         return 'Teacher Dashboard';
+//     });
+// });
+
+
