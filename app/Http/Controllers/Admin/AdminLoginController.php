@@ -9,8 +9,7 @@ class AdminLoginController extends Controller
 {
     public function showLoginForm()
     {
-        dd(11);
-        return view('admin.login');
+        return view('dashboard.admin.login.show_login_form');
     }
 
     public function login(Request $request)
