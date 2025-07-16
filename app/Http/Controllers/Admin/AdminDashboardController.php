@@ -14,8 +14,6 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        dd('admin dashboard');
-        // Logic to retrieve data for the admin dashboard can be added here
-        return view('admin.dashboard');
+        return view('dashboard.dashboard.dashboard');
     }   
 }

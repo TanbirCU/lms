@@ -22,6 +22,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 
 
+
 // Route::prefix('student')->group(function () {
 //     Route::get('/login', [StudentLoginController::class, 'showLoginForm'])->name('student.login');
 //     Route::post('/login', [StudentLoginController::class, 'login']);

@@ -33,6 +33,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    public function map()
+    {
+        $this->mapApiRoutes();
+        $this->mapWebRoutes();
+        $this->mapAdminRoutes(); // ✅ এটি যোগ করো
+    }
     // public function boot()
     // {
     //     $this->configureRateLimiting();
