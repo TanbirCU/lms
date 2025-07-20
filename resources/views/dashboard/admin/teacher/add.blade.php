@@ -29,6 +29,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="example-text-input" class="col-md-2 col-form-label">Mobile</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="text" name="mobile" value="" id="example-text-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
                                 <div class="col-md-10 input-group">
                                     <input class="form-control" type="password" name="password" id="example-password-input">

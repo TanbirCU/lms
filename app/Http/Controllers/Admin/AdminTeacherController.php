@@ -10,7 +10,7 @@ class AdminTeacherController extends Controller
 {
     public function index()
     {
-        $data['teachers'] = Teacher::all();
+        $data['teachers'] = Teacher::orderBy('id', 'desc')->get();
         return view('dashboard.admin.teacher.list', $data);
     }
     
@@ -38,8 +38,8 @@ class AdminTeacherController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = public_path('assets/admin/teacher');
-            
+            $destinationPath = public_path('assets/admin/images/teacher');
+
             // Ensure the directory exists
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
@@ -47,7 +47,7 @@ class AdminTeacherController extends Controller
 
             $file->move($destinationPath, $filename);
 
-            $teacher->photo = 'assets/admin/teacher/' . $filename; 
+            $teacher->photo = 'assets/admin/images/teacher/' . $filename; 
         }
 
 
