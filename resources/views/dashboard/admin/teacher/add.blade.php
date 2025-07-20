@@ -30,16 +30,16 @@
                             </div>
                             <div class="form-group row">
                                 <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
-                                <div class="col-md-10">
-                                    <input class="form-control" type="password" name="password" value="" id="example-password-input">
+                                <div class="col-md-10 input-group">
+                                    <input class="form-control" type="password" name="password" id="example-password-input">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" onclick="togglePassword('example-password-input', this)">
+                                            <i class="fa fa-eye"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="example-password-input" class="col-md-2 col-form-label">Confirm Password</label>
-                                <div class="col-md-10">
-                                    <input class="form-control" type="password" name="password_confirmation" value="" id="example-password-input">
-                                </div>
-                            </div>
+                        
                             <div class="form-group row">
                                 <label for="example-file-input" class="col-md-2 col-form-label">Photo</label>
                                 <div class="col-md-10">
@@ -64,10 +64,26 @@
 </div><!-- Row end -->
 @endsection
 @push('js')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <script>
         // Initialize image preview
         document.addEventListener('DOMContentLoaded', function () {
             initImagePreview('#image-input');
         });
+        function togglePassword(fieldId, iconElement) {
+            const field = document.getElementById(fieldId);
+            const icon = iconElement.querySelector('i');
+
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = "password";
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
     </script>
 @endpush

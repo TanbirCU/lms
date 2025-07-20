@@ -111,23 +111,23 @@
 
 <script>
     function initImagePreview(inputSelector, previewId = 'image-preview', maxWidth = '200px') {
-    const input = document.querySelector(inputSelector);
-    if (!input) return;
+        const input = document.querySelector(inputSelector);
+        if (!input) return;
 
-    input.addEventListener('change', function (e) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            let preview = document.getElementById(previewId);
-            if (!preview) {
-                preview = document.createElement('img');
-                preview.id = previewId;
-                preview.style.maxWidth = maxWidth;
-                preview.classList.add('mt-3');
-                input.parentElement.appendChild(preview);
-            }
-            preview.src = event.target.result;
-        };
-        reader.readAsDataURL(e.target.files[0]);
+        input.addEventListener('change', function (e) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                let preview = document.getElementById(previewId);
+                if (!preview) {
+                    preview = document.createElement('img');
+                    preview.id = previewId;
+                    preview.style.maxWidth = maxWidth;
+                    preview.classList.add('mt-3');
+                    input.parentElement.appendChild(preview);
+                }
+                preview.src = event.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
         });
     }
 
