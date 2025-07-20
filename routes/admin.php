@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminTeacherController;
 
 
 Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -12,4 +13,7 @@ Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submi
 Route::middleware('auth:admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
+
+    // add teacher
+    Route::get('/teacher-add', [AdminTeacherController::class, 'showAddTeacherForm'])->name('teacher_add');
 });

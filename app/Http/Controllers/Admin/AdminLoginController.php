@@ -22,8 +22,7 @@ class AdminLoginController extends Controller
 
             // Attempt to log the admin in
             if (auth()->guard('admin')->attempt($request->only('email', 'password'))) {
-                return redirect()->route('admin.dashboard')->with('message', 'Login successful');
-                // return view('dashboard.dashboard.dashboard');
+                return redirect()->route('admin.dashboard')->with('message', 'Admin Login successful');
             }
 
             // If login fails, redirect back with an error message

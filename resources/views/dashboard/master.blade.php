@@ -151,11 +151,11 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-receipt"></i>
-                        <span>Reports</span>
+                        <span>Add Teacher</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="">Admission Fee Report</a></li>
-                        <li><a href="">Regular Invest Report</a></li>
+                        <li><a href="{{ route('admin.teacher_add') }}">Add</a></li>
+                        <li><a href="">List</a></li>
                     </ul>
                 </li>
               
