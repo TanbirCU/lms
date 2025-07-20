@@ -11,7 +11,7 @@
                 <p class="">Here You Will Add New Teacher.</p>
 
                 {{-- Start Form --}}
-                <form action="" method="post" enctype="multipart/form-data" class="mt-5">
+                <form id="teacherAdd" action="" method="post" enctype="multipart/form-data" class="mt-5">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -64,7 +64,7 @@
 </div><!-- Row end -->
 @endsection
 @push('js')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <script>
         // Initialize image preview
@@ -85,5 +85,16 @@
                 icon.classList.add('fa-eye');
             }
         }
+       $(document).ready(function () {
+            ajaxFormSubmitJQ('#teacherAdd', {
+                url: "{{ route('admin.teacher_store') }}", // ✅ Or use '/teacher/add'
+                method: 'POST',
+                onSuccess: function (response) {
+                    toastr.success(response.message || 'Teacher added successfully!');
+                    // Optionally clear form or redirect
+                    // $('#teacherAdd')[0].reset();
+                }
+            });
+        });
     </script>
 @endpush

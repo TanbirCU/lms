@@ -155,7 +155,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.teacher_add') }}">Add</a></li>
-                        <li><a href="">List</a></li>
+                        <li><a href="{{ route('admin.teacher_list') }}">List</a></li>
                     </ul>
                 </li>
               

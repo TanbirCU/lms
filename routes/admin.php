@@ -16,4 +16,6 @@ Route::middleware('auth:admin')->group(function () {
 
     // add teacher
     Route::get('/teacher-add', [AdminTeacherController::class, 'showAddTeacherForm'])->name('teacher_add');
+    Route::post('/teacher-add', [AdminTeacherController::class, 'storeTeacher'])->name('teacher_store');
+    Route::get('/teacher-list', [AdminTeacherController::class, 'index'])->name('teacher_list');
 });

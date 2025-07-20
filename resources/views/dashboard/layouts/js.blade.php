@@ -110,6 +110,7 @@
 <script src="{{asset('/')}}assets/admin/libs/summernote/summernote-bs4.min.js"></script>
 
 <script>
+    // image preview function
     function initImagePreview(inputSelector, previewId = 'image-preview', maxWidth = '200px') {
         const input = document.querySelector(inputSelector);
         if (!input) return;
@@ -130,6 +131,49 @@
             reader.readAsDataURL(e.target.files[0]);
         });
     }
+
+    // form submit function
+    function ajaxFormSubmitJQ(formSelector, options = {}) {
+        $(document).on('submit', formSelector, function (e) {
+            e.preventDefault();
+
+            let $form = $(this);
+            let formData = new FormData(this);
+            let actionUrl = options.url || $form.attr('action') || window.location.href;
+
+            $.ajax({
+                url: actionUrl,
+                type: options.method || 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    if (typeof options.beforeSend === 'function') {
+                        options.beforeSend($form);
+                    }
+                },
+                success: function (response) {
+                    
+                    toastr.success(response.message || 'Operation successful!');
+                    
+                },
+                error: function (xhr) {
+                    if (typeof options.onError === 'function') {
+                        options.onError(xhr, $form);
+                    } else if (xhr.responseJSON?.errors) {
+                        $.each(xhr.responseJSON.errors, function (key, messages) {
+                            toastr.error(messages[0]);
+                        });
+                    } else {
+                        toastr.error('Something went wrong.');
+                    }
+                }
+            });
+        });
+    }
+
+
+
 
 </script>
 @stack('js')
