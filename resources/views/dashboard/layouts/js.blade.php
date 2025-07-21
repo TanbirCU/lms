@@ -154,7 +154,9 @@
                 },
                 success: function (response) {
                     
-                    toastr.success(response.message || 'Operation successful!');
+                   if (typeof options.onSuccess === 'function') {
+                        options.onSuccess(response, $form);
+                    }
                     
                 },
                 error: function (xhr) {

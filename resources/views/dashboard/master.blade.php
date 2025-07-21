@@ -158,6 +158,26 @@
                         <li><a href="{{ route('admin.teacher_list') }}">List</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-receipt"></i>
+                        <span>Add Admin</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.admin_adds.add') }}">Add</a></li>
+                        <li><a href="{{ route('admin.admin_adds.index') }}">List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-receipt"></i>
+                        <span>Add Teacher</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.teacher_add') }}">Add</a></li>
+                        <li><a href="{{ route('admin.teacher_list') }}">List</a></li>
+                    </ul>
+                </li>
               
 
             </ul>

@@ -1,17 +1,17 @@
 @extends('dashboard.master')
 
-@section('title', 'Add Teacher')
+@section('title', 'Add Admin')
 
 @section('content')
    <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Add New Teacher</h4>
-                <p class="">Here You Will Add New Teacher.</p>
+                <h4 class="card-title">Add New Admin</h4>
+                <p class="">Here You Will Add New Admin.</p>
 
                 {{-- Start Form --}}
-                <form id="teacherAdd" action="" method="post" enctype="multipart/form-data" class="mt-5">
+                <form id="adminAdd" action="" method="post" enctype="multipart/form-data" class="mt-5">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -62,7 +62,7 @@
                             <div class="row mb-3 align-items-center mt-5">
                                 <div class="col-md-3 text-md-end"></div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary">Add Teacher</button>
+                                    <button type="submit" class="btn btn-primary">Add Admin</button>
                                 </div>
                             </div>
 
@@ -98,12 +98,13 @@
             }
         }
        $(document).ready(function () {
-            ajaxFormSubmitJQ('#teacherAdd', {
-                url: "{{ route('admin.teacher_store') }}", // ✅ Or use '/teacher/add'
+            ajaxFormSubmitJQ('#adminAdd', {
+                url: "{{ route('admin.admin_adds.store') }}", // ✅ Or use '/teacher/add'
                 method: 'POST',
                 onSuccess: function (response) {
-                    window.location.href = "{{ route('admin.teacher_list') }}";
-                    toastr.success(response.message || 'Teacher added successfully!');
+                    toastr.success(response.message || 'Admin added successfully!');
+                    adminAdd.reset();
+                    window.location.href = "{{ route('admin.admin_adds.index') }}";
                 }
             });
         });
