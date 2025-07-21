@@ -16,6 +16,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
+                                <th>Address</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -37,12 +38,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                        {{-- <a href="" class="btn btn-primary btn-sm">Edit</a>
                                         <form id="deleteForm_{{ $admin->id }}" action="{{ route('admin.admin_adds', $admin->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $admin->id }})">Delete</button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                     
                                 </tr>

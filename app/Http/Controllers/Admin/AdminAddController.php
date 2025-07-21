@@ -15,7 +15,7 @@ class AdminAddController extends Controller
      */
     public function index()
     {
-        $data['admins'] = Admin::get();
+        $data['admins'] = Admin::orderBy('id', 'desc')->get();
         return view('dashboard.admin.admin.list', $data);
     }
 

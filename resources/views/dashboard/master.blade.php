@@ -164,7 +164,7 @@
                         <span>Add Admin</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.admin_adds.add') }}">Add</a></li>
+                        <li><a href="{{ route('admin.admin_adds.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.admin_adds.index') }}">List</a></li>
                     </ul>
                 </li>
@@ -174,8 +174,8 @@
                         <span>Add Teacher</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.teacher_add') }}">Add</a></li>
-                        <li><a href="{{ route('admin.teacher_list') }}">List</a></li>
+                        <li><a href="">Add</a></li>
+                        <li><a href="">List</a></li>
                     </ul>
                 </li>
               
