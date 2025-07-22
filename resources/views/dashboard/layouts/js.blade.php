@@ -108,7 +108,10 @@
 
 <script src="{{asset('/')}}assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('/')}}assets/admin/libs/summernote/summernote-bs4.min.js"></script>
+{{-- select 2 --}}
+<script src="{{asset('/')}}assets/admin/libs/select2/js/select2.min.js"></script>
 
+{{-- select 2 --}}
 <script>
     // image preview function
     function initImagePreview(inputSelector, previewId = 'image-preview', maxWidth = '200px') {
