@@ -31,74 +31,24 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-md-2 col-form-label">Teacher</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" name="teacher_id" value="" id="example-text-input">
+                                    <select class="select2 form-control select2-multiple" name="teacher_id[]" multiple="multiple" data-placeholder="Choose ...">
+                                        @foreach ($teachers as $teacher)
+                                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-md-2 col-form-label">Multiple Select</label>
+                                <label for="example-text-input" class="col-md-2 col-form-label">Description</label>
                                 <div class="col-md-10">
-                                    <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
-                                   
-                                    <optgroup label="Mountain Time Zone">
-                                        <option value="AZ">Arizona</option>
-                                        <option value="CO">Colorado</option>
-                                        <option value="ID">Idaho</option>
-                                        <option value="MT">Montana</option>
-                                        <option value="NE">Nebraska</option>
-                                        <option value="NM">New Mexico</option>
-                                        <option value="ND">North Dakota</option>
-                                        <option value="UT">Utah</option>
-                                        <option value="WY">Wyoming</option>
-                                    </optgroup>
-                                    <optgroup label="Central Time Zone">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="IA">Iowa</option>
-                                        <option value="KS">Kansas</option>
-                                        <option value="KY">Kentucky</option>
-                                        <option value="LA">Louisiana</option>
-                                        <option value="MN">Minnesota</option>
-                                        <option value="MS">Mississippi</option>
-                                        <option value="MO">Missouri</option>
-                                        <option value="OK">Oklahoma</option>
-                                        <option value="SD">South Dakota</option>
-                                        <option value="TX">Texas</option>
-                                        <option value="TN">Tennessee</option>
-                                        <option value="WI">Wisconsin</option>
-                                    </optgroup>
-                                    <optgroup label="Eastern Time Zone">
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="FL">Florida</option>
-                                        <option value="GA">Georgia</option>
-                                        <option value="IN">Indiana</option>
-                                        <option value="ME">Maine</option>
-                                        <option value="MD">Maryland</option>
-                                        <option value="MA">Massachusetts</option>
-                                        <option value="MI">Michigan</option>
-                                        <option value="NH">New Hampshire</option>
-                                        <option value="NJ">New Jersey</option>
-                                        <option value="NY">New York</option>
-                                        <option value="NC">North Carolina</option>
-                                        <option value="OH">Ohio</option>
-                                        <option value="PA">Pennsylvania</option>
-                                        <option value="RI">Rhode Island</option>
-                                        <option value="SC">South Carolina</option>
-                                        <option value="VT">Vermont</option>
-                                        <option value="VA">Virginia</option>
-                                        <option value="WV">West Virginia</option>
-                                    </optgroup>
-                                </select>
+                                    <div class="summernote"></div>
+
                                 </div>
                             </div>
-                            
-                            
-                            
-                          
+                           
                         
                             <div class="form-group row">
-                                <label for="example-file-input" class="col-md-2 col-form-label">Photo</label>
+                                <label for="example-file-input" class="col-md-2 col-form-label">Course Photo</label>
                                 <div class="col-md-10">
                                     <input class="form-control" type="file" name="photo" id="image-input">
                                 </div>
@@ -120,13 +70,210 @@
     </div><!-- Col end -->
 </div><!-- Row end -->
 @endsection
+
+
 @push('js')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             initImagePreview('#image-input');
+        });
+        $(document).ready(function () {
+            $('.select2-multiple').select2({
+                placeholder: "Select categories",
+                allowClear: true
+            });
+             ajaxFormSubmitJQ('#courseAdd', {
+                url: "{{ route('admin.courses.store') }}", // ✅ Or use '/teacher/add'
+                method: 'POST',
+                onSuccess: function (response) {
+                    window.location.href = "{{ route('admin.courses.index') }}";
+                    toastr.success(response.message || 'Course added successfully!');
+                }
+            });
         });
 
         
     </script>
    
 @endpush
+@push('css')
+    <style>
+        .select2-container .select2-selection--single {
+                background-color: #fff;
+                border: 1px solid #ced4da;
+                height: 38px
+            }
+
+            .select2-container .select2-selection--single:focus {
+                outline: 0
+            }
+
+            .select2-container .select2-selection--single .select2-selection__rendered {
+                line-height: 36px;
+                padding-left: 12px;
+                color: #495057
+            }
+
+            .select2-container .select2-selection--single .select2-selection__arrow {
+                height: 34px;
+                width: 34px;
+                right: 3px
+            }
+
+            .select2-container .select2-selection--single .select2-selection__arrow b {
+                border-color: #adb5bd transparent transparent transparent;
+                border-width: 6px 6px 0 6px
+            }
+
+            .select2-container .select2-selection--single .select2-selection__placeholder {
+                color: #495057
+            }
+
+            .select2-container--open .select2-selection--single .select2-selection__arrow b {
+                border-color: transparent transparent #adb5bd transparent !important;
+                border-width: 0 6px 6px 6px !important
+            }
+
+            .select2-container--default .select2-search--dropdown {
+                padding: 10px;
+                background-color: #fff
+            }
+
+            .select2-container--default .select2-search--dropdown .select2-search__field {
+                border: 1px solid #ced4da;
+                background-color: #fff;
+                color: #74788d;
+                outline: 0
+            }
+
+            .select2-container--default .select2-results__option--highlighted[aria-selected] {
+                background-color: #556ee6
+            }
+
+            .select2-container--default .select2-results__option[aria-selected=true] {
+                background-color: #f8f9fa;
+                color: #16181b
+            }
+
+            .select2-container--default .select2-results__option[aria-selected=true]:hover {
+                background-color: #556ee6;
+                color: #fff
+            }
+
+            .select2-results__option {
+                padding: 6px 12px
+            }
+
+            .select2-dropdown {
+                border: 1px solid rgba(0, 0, 0, .15);
+                background-color: #fff;
+                -webkit-box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03);
+                box-shadow: 0 .75rem 1.5rem rgba(18, 38, 63, .03)
+            }
+
+            .select2-search input {
+                border: 1px solid #f6f6f6
+            }
+
+            .select2-container .select2-selection--multiple {
+                min-height: 38px;
+                background-color: #fff;
+                border: 1px solid #ced4da !important
+            }
+
+            .select2-container .select2-selection--multiple .select2-selection__rendered {
+                padding: 2px 10px
+            }
+
+            .select2-container .select2-selection--multiple .select2-search__field {
+                border: 0;
+                color: #495057
+            }
+
+            .select2-container .select2-selection--multiple .select2-search__field::-webkit-input-placeholder {
+                color: #495057
+            }
+
+            .select2-container .select2-selection--multiple .select2-search__field::-moz-placeholder {
+                color: #495057
+            }
+
+            .select2-container .select2-selection--multiple .select2-search__field:-ms-input-placeholder {
+                color: #495057
+            }
+
+            .select2-container .select2-selection--multiple .select2-search__field::-ms-input-placeholder {
+                color: #495057
+            }
+
+            .select2-container .select2-selection--multiple .select2-search__field::placeholder {
+                color: #495057
+            }
+
+            .select2-container .select2-selection--multiple .select2-selection__choice {
+                background-color: #eff2f7;
+                border: 1px solid #f6f6f6;
+                border-radius: 1px;
+                padding: 0 7px
+            }
+
+            .select2-container--default.select2-container--focus .select2-selection--multiple {
+                border-color: #ced4da
+            }
+
+            .select2-container--default .select2-results__group {
+                font-weight: 600
+            }
+
+            .select2-result-repository__avatar {
+                float: left;
+                width: 60px;
+                margin-right: 10px
+            }
+
+            .select2-result-repository__avatar img {
+                width: 100%;
+                height: auto;
+                border-radius: 2px
+            }
+
+            .select2-result-repository__statistics {
+                margin-top: 7px
+            }
+
+            .select2-result-repository__forks,
+            .select2-result-repository__stargazers,
+            .select2-result-repository__watchers {
+                display: inline-block;
+                font-size: 11px;
+                margin-right: 1em;
+                color: #adb5bd
+            }
+
+            .select2-result-repository__forks .fa,
+            .select2-result-repository__stargazers .fa,
+            .select2-result-repository__watchers .fa {
+                margin-right: 4px
+            }
+
+            .select2-result-repository__forks .fa.fa-flash::before,
+            .select2-result-repository__stargazers .fa.fa-flash::before,
+            .select2-result-repository__watchers .fa.fa-flash::before {
+                content: "\f0e7";
+                font-family: 'Font Awesome 5 Free'
+            }
+
+            .select2-results__option--highlighted .select2-result-repository__forks,
+            .select2-results__option--highlighted .select2-result-repository__stargazers,
+            .select2-results__option--highlighted .select2-result-repository__watchers {
+                color: rgba(255, 255, 255, .8)
+            }
+
+            .select2-result-repository__meta {
+                overflow: hidden
+            }
+
+    </style>
+    
+@endpush
+

@@ -27,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $data['teachers'] = Teacher::all(); // Assuming you have a Teacher model
+        $data['teachers'] = Teacher::all(); 
         return view('dashboard.admin.courses.create', $data);
     }
 
@@ -39,7 +39,37 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'course_name' => 'required|string|max:255',
+            'small_description' => 'required|string',
+            'teacher_id' => 'required|exists:teachers,id',
+            'description' => 'required|string',
+        ]);
+
+       $course = Course::create([
+            'course_name' => $request->course_name,
+            'small_description' => $request->small_description,
+            'teacher_id' => implode(',', $request->teacher_id),
+            'description' => $request->description,
+        ]);
+       if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('assets/admin/images/course');
+
+            // Ensure the directory exists
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            $file->move($destinationPath, $filename);
+
+            $course->photo = 'assets/admin/images/course/' . $filename; 
+        }
+        $course->save();
+
+
+        return redirect()->with('message', 'Course created successfully.');
     }
 
     /**
@@ -84,6 +114,12 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Course::findOrFail($id);
+        $course->delete();
+        if ($course->photo && file_exists(public_path($course->photo))) {
+            unlink(public_path($course->photo));
+        }
+
+        return redirect()->with('message', 'Course deleted successfully.');
     }
 }
