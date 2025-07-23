@@ -9,5 +9,9 @@ class Teacher extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'email', 'password'];
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 
 }

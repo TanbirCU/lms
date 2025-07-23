@@ -41,7 +41,8 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-md-2 col-form-label">Description</label>
                                 <div class="col-md-10">
-                                    <div class="summernote"></div>
+                                    {{-- <div class="summernote"></div> --}}
+                                    <textarea class="summernote" name="description"></textarea>
 
                                 </div>
                             </div>

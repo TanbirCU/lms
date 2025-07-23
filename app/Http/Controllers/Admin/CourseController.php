@@ -16,7 +16,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $data['courses'] = Course::orderBy('created_at', 'desc')->get(); 
+        $data['courses'] = Course::with('teachers')->orderBy('created_at', 'desc')->get();
         return view('dashboard.admin.courses.index', $data);
     }
 
@@ -42,16 +42,17 @@ class CourseController extends Controller
         $request->validate([
             'course_name' => 'required|string|max:255',
             'small_description' => 'required|string',
-            'teacher_id' => 'required|exists:teachers,id',
+            'teacher_id' => 'required|array',
             'description' => 'required|string',
         ]);
 
        $course = Course::create([
             'course_name' => $request->course_name,
             'small_description' => $request->small_description,
-            'teacher_id' => implode(',', $request->teacher_id),
             'description' => $request->description,
         ]);
+        $course->teachers()->attach($request->teacher_id);
+
        if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = time() . '_' . $file->getClientOriginalName();
@@ -69,7 +70,7 @@ class CourseController extends Controller
         $course->save();
 
 
-        return redirect()->with('message', 'Course created successfully.');
+        return response()->json(['message' => 'Teacher added successfully!']);
     }
 
     /**
@@ -80,7 +81,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::with('teachers')->findOrFail($id);
+        return view('dashboard.admin.courses.show', compact('course'));
     }
 
     /**
@@ -120,6 +122,6 @@ class CourseController extends Controller
             unlink(public_path($course->photo));
         }
 
-        return redirect()->with('message', 'Course deleted successfully.');
+        return redirect()->route('admin.courses.index')->with('message', 'Course deleted successfully.');
     }
 }

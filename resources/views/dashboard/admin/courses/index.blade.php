@@ -10,35 +10,36 @@
                 <h4 class="card-title">Course List</h4>
                 <p class="">Here You Will See Course List.</p>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        {{-- <thead>
+                        <thead>
                             <tr>
                                 <th>Serial</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile</th>
-                                <th>Address</th>
-                                <th>Image</th>
+                                <th>Course Name</th>
+                                <th>Small Description</th>
+                                <th>Teachers</th>
                                 <th>Action</th>
                             </tr>
-                        </thead> --}}
+                        </thead>
 
-                        {{-- <tbody>
-                            @forelse($admins as $admin)
+                        <tbody>
+                            @forelse($courses as $course)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $admin->name }}</td>
-                                    <td>{{ $admin->email }}</td>
-                                    <td>{{ $admin->phone }}</td>
-                                    <td>{{ $admin->address }}</td>
+                                    <td>{{ $course->course_name }}</td>
+                                    <td>{{ $course->small_description }}</td>
                                     <td>
-                                        @if($admin->photo)
-                                            <img src="{{ asset($admin->photo) }}" alt="{{ $admin->name }}" width="50">
-                                        @else
-                                            N/A
-                                        @endif
+                                        @foreach($course->teachers as $teacher)
+                                            <span class="badge badge-info">{{ $teacher->name }}</span>
+                                        @endforeach
                                     </td>
+                                    
                                     <td>
-                                        
+                                        <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                        <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
                                     </td>
                                     
                                 </tr>
@@ -49,7 +50,7 @@
                             @endforelse
                         
 
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 {{-- Start Form --}}
                 {{-- End Form --}}
