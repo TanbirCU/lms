@@ -102,9 +102,9 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="{{asset(auth()->user()->photo ?? '/assets/admin/images/users/avatar-1.jpg') }}"
+                                <img class="rounded-circle header-profile-user" src="{{ asset(auth()->guard('admin')->user()->photo ?? 'assets/admin/images/users/avatar-1.jpg') }}"
                                     alt="Header Avatar">
-                                    <span class="d-none d-xl-inline-block ml-1">{{ auth()->user()->name ?? 'Henry' }}</span>
+                                    <span class="d-none d-xl-inline-block ml-1">{{ auth()->guard('admin')->user()->name ?? 'Henry' }}</span>
                                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -176,6 +176,16 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.courses.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.courses.index') }}">List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-receipt"></i>
+                        <span>Lessons</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.lessons.create') }}">Add</a></li>
+                        <li><a href="{{ route('admin.lessons.index') }}">List</a></li>
                     </ul>
                 </li>
               

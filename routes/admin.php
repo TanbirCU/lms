@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminTeacherController;
 use App\Http\Controllers\Admin\AdminAddController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\LessonController;
 
 Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submit');
@@ -25,5 +26,6 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('/admin-adds',AdminAddController::class)->names('admin_adds');
     // course
     Route::resource('/courses',CourseController::class)->names('courses');
+    Route::resource('/lessons',LessonController::class)->names('lessons');
 
 });
