@@ -40,28 +40,37 @@ class LessonController extends Controller
    public function store(Request $request, ZoomService $zoomService)
     {
         $request->validate([
-            'course_id' => 'required|exists:courses,id',
-            'title' => 'required',
-            'lesson_date' => 'required|date',
-            'lesson_time' => 'required',
+            'course_id'    => 'required|exists:courses,id',
+            'title'        => 'required|string|max:255',
+            'lesson_date'  => 'required|date',
+            'lesson_time'  => 'required',
+            'description'  => 'nullable|string',
         ]);
 
         $datetime = $request->lesson_date . ' ' . $request->lesson_time;
-        $zoom = $zoomService->createMeeting($request->title, $datetime);
-        dd($zoom);
+
+        try {
+            $zoom = $zoomService->createMeeting($request->title, $datetime);
+            dd($zoom); // Debugging line, remove in production
+        } catch (\Exception $e) {
+            return back()->with('error', 'Zoom meeting failed: ' . $e->getMessage());
+        }
+
         Lesson::create([
             'course_id'       => $request->course_id,
             'title'           => $request->title,
             'description'     => $request->description,
             'lesson_date'     => $request->lesson_date,
             'lesson_time'     => $request->lesson_time,
-            'zoom_link'       => $zoom['join_url'],
-            'zoom_start_url'  => $zoom['start_url'],
-            'zoom_meeting_id' => $zoom['id'],
+            'zoom_link'       => $zoom['join_url'] ?? null,
+            'zoom_start_url'  => $zoom['start_url'] ?? null,
+            'zoom_meeting_id' => $zoom['id'] ?? null,
         ]);
 
-        return redirect()->route('admin.courses.index')->with('success', 'Lesson scheduled!');
+        return redirect()->route('admin.courses.index')
+                        ->with('message', 'Lesson & Zoom meeting created successfully!');
     }
+
 
     public function uploadRecording(Request $request, Lesson $lesson)
     {
