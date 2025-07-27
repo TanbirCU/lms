@@ -151,7 +151,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-receipt"></i>
-                        <span>Add Teacher</span>
+                        <span>Teachers</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.teacher_add') }}">Add</a></li>
@@ -161,11 +161,21 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-receipt"></i>
-                        <span>Add Admin</span>
+                        <span>Admins</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.admin_adds.create') }}">Add</a></li>
                         <li><a href="{{ route('admin.admin_adds.index') }}">List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-receipt"></i>
+                        <span>Students</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.students.create') }}">Add</a></li>
+                        <li><a href="{{ route('admin.students.index') }}">List</a></li>
                     </ul>
                 </li>
                 <li>

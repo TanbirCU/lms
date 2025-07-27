@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\Student\StudentLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +24,14 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 
 
-// Route::prefix('student')->group(function () {
-//     Route::get('/login', [StudentLoginController::class, 'showLoginForm'])->name('student.login');
-//     Route::post('/login', [StudentLoginController::class, 'login']);
-//     Route::middleware('auth:student')->get('/dashboard', function () {
-//         return 'Student Dashboard';
-//     });
-// });
+Route::prefix('student')->group(function () {
+    Route::get('/login', [StudentLoginController::class, 'showLoginForm'])->name('student.login');
+    Route::post('/login', [StudentLoginController::class, 'login']);
+    Route::get('/registration', [StudentLoginController::class, 'showRegistrationForm'])->name('student.registration');
+    Route::middleware('auth:student')->get('/dashboard', function () {
+        return 'Student Dashboard';
+    });
+});
 
 // Route::prefix('teacher')->group(function () {
 //     Route::get('/login', [TeacherLoginController::class, 'showLoginForm'])->name('teacher.login');

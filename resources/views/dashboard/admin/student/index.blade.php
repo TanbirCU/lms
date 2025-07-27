@@ -1,44 +1,46 @@
 @extends('dashboard.master')
 
-@section('title', 'Course List')
+@section('title', 'Students List')
 
 @section('content')
    <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Course List</h4>
-                <p class="">Here You Will See Course List.</p>
+                <h4 class="card-title">Students List</h4>
+                <p class="">Here You Will See Students List.</p>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>Serial</th>
-                                <th>Course Name</th>
-                                <th>Small Description</th>
-                                <th>Teachers</th>
+                                <th>name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-{{-- 
+
                         <tbody>
-                            @forelse($lessons as $lesson)
+                            @forelse($students as $student)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $lesson->course_name }}</td>
-                                    <td>{{ $lesson->small_description }}</td>
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->email }}</td>
+                                    <td>{{ $student->mobile }}</td>
                                     <td>
-                                        @foreach($lesson->teachers as $teacher)
-                                            <span class="badge badge-info">{{ $teacher->name }}</span>
-                                        @endforeach
+                                        @if($student->photo)
+                                            <img src="{{ asset($student->photo) }}" alt="{{ $student->name }}" width="50">
+                                        @else
+                                            N/A
+                                        @endif
                                     </td>
-                                    
                                     <td>
-                                        <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
-                                        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
+                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                        <form id="deleteForm_{{ $student->id }}" action="{{ route('admin.student_delete', $student->id) }}" method="POST" style="display: inline;">
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            @method('GET')
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $student->id }})">Delete</button>
                                         </form>
                                     </td>
                                     
@@ -50,7 +52,7 @@
                             @endforelse
                         
 
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 {{-- Start Form --}}
                 {{-- End Form --}}

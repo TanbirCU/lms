@@ -11,3 +11,6 @@
     <link rel="stylesheet" href="{{asset('/assets/front/css/default.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/front/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/front/css/responsive.css')}}">
+    @stack('front_css')
+        
+    

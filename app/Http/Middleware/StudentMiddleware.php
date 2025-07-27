@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class StudentMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-       if (Auth::guard('admin')->check()) {
+          if (Auth::guard('student')->check()) {
             return $next($request);
         }
 
-        // If not logged in as admin, redirect to admin login
-        return redirect()->route('admin.login')->with('message', 'You must be logged in as an admin to access this page.');
+        // If not logged in as student, redirect to student login
+        return redirect()->route('student.login')->with('message', 'You must be logged in as a student to access this page.');
     }
 }

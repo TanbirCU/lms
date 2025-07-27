@@ -84,6 +84,13 @@
                                         <li>
                                             <a href="{{ route('contact') }}">CONTACT</a>
                                         </li>
+                                       
+                                        <li>
+                                            <a href="{{ route('student.registration') }}">Registration</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('student.login') }}">Login</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
