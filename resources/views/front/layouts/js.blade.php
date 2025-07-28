@@ -18,4 +18,29 @@
     <script src="{{asset('/assets/front/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{asset('/assets/front/js/plugins.js')}}"></script>
     <script src="{{asset('/assets/front/js/main.js')}}"></script>
+    
+    <!-- jQuery (required for Toastr) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @stack('js')
+
+   <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "5000"
+        };
+
+        $(document).ready(function() {
+            @if(session('message'))
+                toastr.success("{{ session('message') }}");
+            @endif
+
+            @if(session('error'))
+                toastr.error("{{ session('error') }}");
+            @endif
+        });
+  </script>

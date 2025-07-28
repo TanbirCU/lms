@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('/assets/front/css/default.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/front/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/front/css/responsive.css')}}">
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('front_css')
-        
     

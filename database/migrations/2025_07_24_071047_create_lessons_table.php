@@ -21,7 +21,7 @@ class CreateLessonsTable extends Migration
             $table->date('lesson_date');
             $table->time('lesson_time');
             $table->string('zoom_link')->nullable();         // join_url
-            $table->string('zoom_start_url')->nullable();    // host URL
+            $table->text('zoom_start_url')->nullable();    // host URL
             $table->string('zoom_meeting_id')->nullable();
             $table->string('recording_url')->nullable();
             $table->timestamps();

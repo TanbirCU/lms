@@ -5,7 +5,7 @@
     <div class="student-register-page">
         <div class="student-register-card">
             <h2 class="register-heading">📝 Student Registration</h2>
-            <form action="" method="POST">
+            <form action="{{ route('student.register') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="mobile">📱 Mobile Number</label>
-                    <input type="tel" name="mobile" id="mobile" placeholder="e.g. 01XXXXXXXXX" pattern="01[0-9]{9}" required>
+                    <input type="tel" name="mobile" id="mobile" placeholder="e.g. 01XXXXXXXXX" required>
                 </div>
 
                 <div class="form-group">

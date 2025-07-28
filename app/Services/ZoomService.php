@@ -19,7 +19,6 @@ class ZoomService
         $clientId = config('services.zoom.client_id');
         $clientSecret = config('services.zoom.client_secret');
         $accountId = config('services.zoom.account_id');
-
         if (!$clientId || !$clientSecret || !$accountId) {
             throw new \Exception("Zoom credentials missing. Check .env and config/services.php");
         }
@@ -38,7 +37,6 @@ class ZoomService
             ]);
             throw new \Exception('Failed to get Zoom access token: ' . $response->body());
         }
-
         return $response->json()['access_token'];
     }
 
@@ -47,6 +45,7 @@ class ZoomService
 
     public function createMeeting($topic, $startDateTime)
     {
+       
         $response = Http::withToken($this->accessToken)
             ->post($this->baseUrl . '/users/' . config('services.zoom.user_id') . '/meetings', [
                 'topic' => $topic,
@@ -59,12 +58,11 @@ class ZoomService
                     'mute_upon_entry' => true,
                     'waiting_room' => false,
                 ]
-            ]); 
+            ]);
         if ($response->failed()) {
             logger()->error('Zoom meeting create error', $response->json());
             throw new \Exception('Failed to create Zoom meeting');
         }
-
-        return $response->json($response);
+        return $response->json();
     }
 }

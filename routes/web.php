@@ -28,6 +28,7 @@ Route::prefix('student')->group(function () {
     Route::get('/login', [StudentLoginController::class, 'showLoginForm'])->name('student.login');
     Route::post('/login', [StudentLoginController::class, 'login']);
     Route::get('/registration', [StudentLoginController::class, 'showRegistrationForm'])->name('student.registration');
+    Route::post('/registration-store', [StudentLoginController::class, 'studentRegister'])->name('student.register');
     Route::middleware('auth:student')->get('/dashboard', function () {
         return 'Student Dashboard';
     });

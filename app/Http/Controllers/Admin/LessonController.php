@@ -51,7 +51,6 @@ class LessonController extends Controller
 
         try {
             $zoom = $zoomService->createMeeting($request->title, $datetime);
-            dd($zoom); // Debugging line, remove in production
         } catch (\Exception $e) {
             return back()->with('error', 'Zoom meeting failed: ' . $e->getMessage());
         }
