@@ -13,5 +13,6 @@ class Teacher extends Model
     {
         return $this->belongsToMany(Course::class);
     }
+    
 
 }

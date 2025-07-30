@@ -104,7 +104,16 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user" src="{{ asset(auth()->guard('admin')->user()->photo ?? 'assets/admin/images/users/avatar-1.jpg') }}"
                                     alt="Header Avatar">
-                                    <span class="d-none d-xl-inline-block ml-1">{{ auth()->guard('admin')->user()->name ?? 'Henry' }}</span>
+                                    <span class="d-none d-xl-inline-block ml-1">
+                                        @if (auth()->guard('student')->check())
+                                            {{ auth()->guard('student')->user()->name ?? 'Student' }}
+                                        @elseif (auth()->guard('admin')->check())
+                                            {{ auth()->guard('admin')->user()->name ?? 'Admin' }}
+                                        @else
+                                            Guest
+                                        @endif
+                                    </span>
+
                                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -112,14 +121,18 @@
                                 <a class="dropdown-item" href=""><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
 
                                 <div class="dropdown-divider"></div>
-                                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form"
+                                    action="{{ auth()->guard('student')->check() ? route('student.logout') : route('admin.logout') }}"
+                                    method="GET"
+                                    style="display: none;">
                                     @csrf
                                 </form>
 
                                 <a class="dropdown-item text-danger" href="#"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                   <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout
                                 </a>
+
 
                             </div>
                         </div>

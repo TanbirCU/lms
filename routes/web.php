@@ -19,6 +19,7 @@ use App\Http\Controllers\Student\StudentDashboardController;
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/course', [HomeController::class, 'course'])->name('course');
+Route::get('/course/{id}', [HomeController::class, 'courseDetails'])->name('course.details');
 Route::get('/events', [HomeController::class, 'events'])->name('events');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
@@ -32,6 +33,7 @@ Route::prefix('student')->group(function () {
     Route::post('/registration-store', [StudentLoginController::class, 'studentRegister'])->name('student.register');
     Route::middleware('auth:student')->group(function () {
         Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+        Route::get('/logout', [StudentLoginController::class, 'logout'])->name('student.logout');
     });
 
 });
