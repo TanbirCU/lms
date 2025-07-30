@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm_password">🔁 Confirm Password</label>
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Repeat your password" required>
+                    <label for="password_confirmation">🔁 Confirm Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password" required>
                 </div>
 
                 <button type="submit" class="register-btn">Register</button>

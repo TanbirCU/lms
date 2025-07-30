@@ -5,7 +5,7 @@
     <div class="student-login-page">
         <div class="student-login-card">
             <h2 class="login-heading">🎓 Student Login</h2>
-            <form action="" method="POST">
+            <form action="{{ route('student.login') }}" method="POST">
                 @csrf
 
                 <div class="form-group">

@@ -145,8 +145,33 @@
                         <span style="color:hsl(53, 96.30%, 68.60%) !important; font-size:16px">Your Details</span>
                     </a>
                 </li>
-               
-
+               @if (auth()->guard('student')->check())
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-receipt"></i>
+                            <span>Enrolled Courses</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="">Add</a></li>
+                            <li><a href="">List</a></li>
+                        </ul>
+                    </li>
+                   
+               @endif
+               @if (auth()->guard('admin')->check())
+                
+                   
+              
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-receipt"></i>
+                        <span>Teachers</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('admin.teacher_add') }}">Add</a></li>
+                        <li><a href="{{ route('admin.teacher_list') }}">List</a></li>
+                    </ul>
+                </li>
                 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -198,7 +223,7 @@
                         <li><a href="{{ route('admin.lessons.index') }}">List</a></li>
                     </ul>
                 </li>
-              
+               @endif
 
             </ul>
         </div>

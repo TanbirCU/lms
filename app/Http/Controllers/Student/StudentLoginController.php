@@ -20,7 +20,6 @@ class StudentLoginController extends Controller
                 'email' => 'required|email|unique:students,email',
                 'password' => 'required|min:6|confirmed',
             ]);
-
             // Create the student user
             $student = new Student();
             $student->name = $request->name;
