@@ -23,6 +23,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="example-text-input" class="col-md-2 col-form-label">Course Price</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="text" name="price" value="" id="example-text-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="example-text-input" class="col-md-2 col-form-label">Short Description</label>
                                 <div class="col-md-10">
                                     <input class="form-control" type="text" name="small_description" value="" id="example-text-input">

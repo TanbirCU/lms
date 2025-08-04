@@ -27,21 +27,21 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->email }}</td>
-                                    <td>{{ $student->mobile }}</td>
+                                    <td>{{ $student->phone }}</td>
                                     <td>
                                         @if($student->photo)
-                                            <img src="{{ asset($student->photo) }}" alt="{{ $student->name }}" width="50">
+                                            <img src="{{ asset($student->image) }}" alt="{{ $student->name }}" width="50">
                                         @else
                                             N/A
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                        {{-- <a href="" class="btn btn-primary btn-sm">Edit</a>
                                         <form id="deleteForm_{{ $student->id }}" action="{{ route('admin.student_delete', $student->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('GET')
                                             <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $student->id }})">Delete</button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                     
                                 </tr>

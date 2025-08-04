@@ -15,7 +15,7 @@ Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submi
 // Protected routes (require admin login)
 Route::middleware('auth:admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 
     // add teacher
     Route::get('/teacher-add', [AdminTeacherController::class, 'showAddTeacherForm'])->name('teacher_add');
@@ -28,6 +28,8 @@ Route::middleware('auth:admin')->group(function () {
     // course
     Route::resource('/courses',CourseController::class)->names('courses');
     Route::resource('/lessons',LessonController::class)->names('lessons');
+    Route::get('/admin/lessons/by-course', [LessonController::class, 'getByCourse'])->name('lessons.byCourse');
+
 
     Route::resource('/students',StudentController::class)->names('students');
 

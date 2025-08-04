@@ -3,60 +3,95 @@
 @section('title', 'Course List')
 
 @section('content')
-   <div class="row justify-content-center">
+<div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Course List</h4>
-                <p class="">Here You Will See Course List.</p>
-                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Serial</th>
-                                <th>Course Name</th>
-                                <th>Small Description</th>
-                                <th>Teachers</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-{{-- 
-                        <tbody>
-                            @forelse($lessons as $lesson)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $lesson->course_name }}</td>
-                                    <td>{{ $lesson->small_description }}</td>
-                                    <td>
-                                        @foreach($lesson->teachers as $teacher)
-                                            <span class="badge badge-info">{{ $teacher->name }}</span>
-                                        @endforeach
-                                    </td>
-                                    
-                                    <td>
-                                        <a href="{{ route('admin.courses.show', $course->id) }}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
-                                        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </td>
-                                    
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="text-center">Data not found</td>
-                                </tr>
-                            @endforelse
-                        
+                <p>Here You Will See Course List.</p>
 
-                        </tbody> --}}
-                    </table>
-                {{-- Start Form --}}
-                {{-- End Form --}}
+                <div class="mb-3">
+                    <label for="courseFilter" class="form-label">Filter by Course</label>
+                    <select id="courseFilter" class="form-select">
+                        <option value="">-- Select Course --</option>
+                        @foreach ($courses as $course)
+                            <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <table id="lessonsTable" class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Zoom Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($lessons as $lesson)
+                            <tr>
+                                <td>{{ $lesson->title }}</td>
+                                <td>{{ $lesson->lesson_date }}</td>
+                                <td>{{ $lesson->lesson_time }}</td>
+                                <td>
+                                    @if($lesson->zoom_link)
+                                        <a href="{{ $lesson->zoom_link }}" target="_blank">Join</a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
             </div><!-- Card body end -->
         </div><!-- Card end -->
     </div><!-- Col end -->
 </div><!-- Row end -->
 @endsection
 
+@push('js')
+<script>
+    $(document).ready(function () {
+        $('#courseFilter').change(function () {
+            let courseId = $(this).val();
+
+            $.ajax({
+                url: "{{ route('admin.lessons.byCourse') }}",
+                type: 'GET',
+                data: { course_id: courseId },
+                success: function (response) {
+                    let rows = '';
+
+                    if (response.length > 0) {
+                        response.forEach(function (lesson) {
+                            rows += `
+                                <tr>
+                                    <td>${lesson.title}</td>
+                                    <td>${lesson.lesson_date}</td>
+                                    <td>${lesson.lesson_time}</td>
+                                    <td>${lesson.zoom_link ? `<a href="${lesson.zoom_link}" target="_blank">Join</a>` : 'N/A'}</td>
+                                </tr>
+                            `;
+                        });
+                    } else {
+                        rows = `
+                            <tr>
+                                <td colspan="4" class="text-center">No lessons found for this course.</td>
+                            </tr>
+                        `;
+                    }
+
+                    $('#lessonsTable tbody').html(rows);
+                },
+                error: function () {
+                    alert("Something went wrong while fetching lessons.");
+                }
+            });
+        });
+    });
+</script>
+@endpush

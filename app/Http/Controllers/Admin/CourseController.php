@@ -41,6 +41,7 @@ class CourseController extends Controller
     {
         $request->validate([
             'course_name' => 'required|string|max:255',
+            'price' => 'required|numeric',
             'small_description' => 'required|string',
             'teacher_id' => 'required|array',
             'description' => 'required|string',
@@ -48,6 +49,7 @@ class CourseController extends Controller
 
        $course = Course::create([
             'course_name' => $request->course_name,
+            'price' => $request->price,
             'small_description' => $request->small_description,
             'description' => $request->description,
         ]);

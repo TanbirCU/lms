@@ -17,8 +17,17 @@ class LessonController extends Controller
     public function index()
     {
         $data['lessons'] = Lesson::all(); 
+        $data['courses'] = Course::all(); // Fetch all courses for the dropdown
         return view('dashboard.admin.lessons.index',$data);
     }
+
+    public function getByCourse(Request $request)
+    {
+        $lessons = Lesson::where('course_id', $request->course_id)->get();
+
+        return response()->json($lessons);
+    }
+
 
     /**
      * Show the form for creating a new resource.
