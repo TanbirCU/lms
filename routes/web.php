@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\Student\EnrollmentController;
 use App\Http\Controllers\Student\StudentLoginController;
 use App\Http\Controllers\Student\StudentDashboardController;
 
@@ -23,7 +24,8 @@ Route::get('/course/{id}', [HomeController::class, 'courseDetails'])->name('cour
 Route::get('/events', [HomeController::class, 'events'])->name('events');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-
+// course enrollment
+Route::get('/course/enroll/{id}', [EnrollmentController::class, 'enrollCourse'])->name('course.enroll');
 
 
 Route::prefix('student')->group(function () {
@@ -34,6 +36,8 @@ Route::prefix('student')->group(function () {
     Route::middleware('auth:student')->group(function () {
         Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
         Route::get('/logout', [StudentLoginController::class, 'logout'])->name('student.logout');
+        
+       
     });
 
 });

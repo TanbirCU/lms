@@ -12,6 +12,7 @@
                         </div>
                         <div class="course-details-content">
                             <h1>{{ $course->course_name }}</h1>
+                            <h2>Price:{{ $course->price }} Tk</h2>
                             <h2>{{ $course->short_description }}</h2>
                             <p style="font-size: 14px;">{!! $course->description !!}</p>
                         </div>
@@ -35,6 +36,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="{{ route('course.enroll', $course->id) }}" class="btn btn-primary">Enroll Now</a>
             </div>
         </div>
     </div>

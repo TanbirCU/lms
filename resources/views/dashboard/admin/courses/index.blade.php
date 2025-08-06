@@ -14,6 +14,7 @@
                             <tr>
                                 <th>Serial</th>
                                 <th>Course Name</th>
+                                <th>Price</th>
                                 <th>Small Description</th>
                                 <th>Teachers</th>
                                 <th>Action</th>
@@ -25,6 +26,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $course->course_name }}</td>
+                                    <td>{{ $course->price }}</td>
                                     <td>{{ $course->small_description }}</td>
                                     <td>
                                         @foreach($course->teachers as $teacher)
