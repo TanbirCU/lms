@@ -35,8 +35,6 @@
                                 </div>
                             </label>
 
-
-
                             <!-- SSLCommerz -->
                             <label class="card p-3 mb-3 shadow-sm" style="cursor: pointer;">
                                 <div class="d-flex align-items-center" style="gap: 15px;">
