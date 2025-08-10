@@ -38,10 +38,12 @@
 
 
                             <!-- SSLCommerz -->
-                            <label class="card p-3 mb-3 d-flex align-items-center shadow-sm" style="cursor: pointer;">
-                                <input type="radio" name="payment_method" value="sslcommerz" class="mr-3">
-                                <img src="{{ asset('assets/icons/sslcommerz.png') }}" alt="SSLCommerz" width="40" height="40" class="mr-3">
-                                <strong>SSLCommerz</strong>
+                            <label class="card p-3 mb-3 shadow-sm" style="cursor: pointer;">
+                                <div class="d-flex align-items-center" style="gap: 15px;">
+                                    <input type="radio" name="payment_method" value="sslcommerz" class="mr-3">
+                                    <img src="{{ asset('assets/front/img/payment/ssl.jpeg') }}" alt="SSLCommerz" width="100%" height="40" class="mr-3">
+                                    {{-- <strong>SSLCommerz</strong> --}}
+                                </div>
                             </label>
 
                             <!-- Nagad -->
