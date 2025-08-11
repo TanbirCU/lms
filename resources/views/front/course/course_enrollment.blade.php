@@ -23,8 +23,8 @@
                     <div class="course-teacher">
                         <h4 style="margin-bottom: 20px;">Choose Payment Method</h4>
 
-                        <form action="" method="POST">
-                            @csrf
+                        {{-- <form action="{{ route('student.checkout', $courseEnrollment->id) }}" method="POST">
+                            @csrf --}}
 
                             <!-- Bkash -->
                            <label class="card p-3 mb-3 shadow-sm" style="cursor: pointer;">
@@ -53,9 +53,10 @@
 
                             <!-- Pay Button -->
                             <div class="text-left mt-4">
-                                <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+                                {{-- <button type="submit" class="btn btn-primary btn-block">Pay Now</button> --}}
+                                <a href="{{ route('student.checkout', $courseEnrollment->id) }}" class="btn btn-success">Pay Now</a>
                             </div>
-                        </form>
+                        {{-- </form> --}}
 
                     </div>
                 </div>

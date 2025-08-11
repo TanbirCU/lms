@@ -5,6 +5,7 @@ use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\Student\EnrollmentController;
 use App\Http\Controllers\Student\StudentLoginController;
 use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\Student\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,10 @@ Route::prefix('student')->group(function () {
         Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
         Route::get('/logout', [StudentLoginController::class, 'logout'])->name('student.logout');
         
-       
+        Route::get('/checkout/{courseId}', [PaymentController::class, 'checkout'])->name('student.checkout');
+        Route::post('/success', [PaymentController::class, 'paymentSuccess'])->name('student.payment.success');
+        Route::post('/fail', [PaymentController::class, 'paymentFail'])->name('student.payment.fail');
+        Route::post('/cancel', [PaymentController::class, 'paymentCancel'])->name('student.payment.cancel');
     });
 
 });

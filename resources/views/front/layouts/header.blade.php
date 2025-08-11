@@ -84,13 +84,19 @@
                                         <li>
                                             <a href="{{ route('contact') }}">CONTACT</a>
                                         </li>
-                                       
-                                        <li>
-                                            <a href="{{ route('student.registration') }}">Registration</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('student.login') }}">Login</a>
-                                        </li>
+                                       @if (Auth::guard('student')->check())
+                                           <li>
+                                               <a href="{{ route('student.dashboard') }}">DASHBOARD</a>
+                                           </li>
+                                       @else
+                                           
+                                            <li>
+                                                <a href="{{ route('student.registration') }}">Registration</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('student.login') }}">Login</a>
+                                            </li>
+                                       @endif
                                     </ul>
                                 </nav>
                             </div>
