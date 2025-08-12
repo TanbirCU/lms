@@ -160,14 +160,18 @@
                 </li>
                @if (auth()->guard('student')->check())
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <a href="{{ route('student.enrolled_courses') }}" class="waves-effect">
                             <i class="bx bx-receipt"></i>
                             <span>Enrolled Courses</span>
                         </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="">Add</a></li>
-                            <li><a href="">List</a></li>
-                        </ul>
+                    
+                    </li>
+                    <li>
+                        <a href="" class="waves-effect">
+                            <i class="bx bx-receipt"></i>
+                            <span>Corse Content</span>
+                        </a>
+                    
                     </li>
                    
                @endif

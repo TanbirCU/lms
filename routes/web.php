@@ -42,6 +42,9 @@ Route::prefix('student')->group(function () {
         Route::post('/success', [PaymentController::class, 'paymentSuccess'])->name('student.payment.success');
         Route::post('/fail', [PaymentController::class, 'paymentFail'])->name('student.payment.fail');
         Route::post('/cancel', [PaymentController::class, 'paymentCancel'])->name('student.payment.cancel');
+
+        Route::get('/enrolled-courses', [EnrollmentController::class, 'enrolledCourses'])->name('student.enrolled_courses');
+        Route::get('/course-content/{id}', [EnrollmentController::class, 'courseContent'])->name('student.course_content');
     });
 
 });
