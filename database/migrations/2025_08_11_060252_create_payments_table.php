@@ -16,10 +16,11 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id')->unique();
+            $table->unsignedBigInteger('course_id')->index();
             $table->decimal('amount', 10, 2);
             $table->string('currency')->default('BDT');
             $table->string('status');
-            $table->string('customer_id');
+            $table->unsignedBigInteger('student_id')->index();
             $table->string('customer_name');
             $table->string('customer_mobile');
             $table->string('customer_email');

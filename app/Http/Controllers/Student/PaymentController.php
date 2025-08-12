@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Course;
+use App\Models\EnrolledCourse;
 use DGvai\SSLCommerz\SSLCommerz;
 
 
@@ -20,12 +21,14 @@ class PaymentController extends Controller
             'store_id' => env('SSLC_STORE_ID'),
             'store_passwd' => env('SSLC_STORE_PASSWORD'),
             'total_amount' => $course->price ?? 100,
+            'course_id' => $course->id,
             'currency' => 'BDT',
             'tran_id' => uniqid(),
             'success_url' => route('student.payment.success'),
             'fail_url' => route('student.payment.fail'),
             'cancel_url' => route('student.payment.cancel'),
             'emi_option' => 0,
+            'student_id' => $student->id ?? 'Guest',
             'cus_name' => $student->name ?? 'Guest',
             'cus_email' => $student->email ?? 'guest@example.com',
             'cus_add1' => $student->address ?? 'N/A',
@@ -90,8 +93,14 @@ class PaymentController extends Controller
                 'amount' => $validationResponse['amount'],
                 'currency' => $validationResponse['currency_type'],
                 'status' => $validationResponse['status'],
+                'student_id' => $postData['student_id'],
                 'customer_name' => $postData['cus_name'],
                 'customer_email' => $postData['cus_email'],
+                'course_id'     => $postData['course_id'],
+            ]);
+            EnrolledCourse::create([
+                'student_id' => $postData['student_id'],
+                'course_id' => $postData['course_id'],
             ]);
 
             return "Payment Successful! Transaction ID: " . $validationResponse['tran_id'];

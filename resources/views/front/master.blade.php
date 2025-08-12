@@ -22,7 +22,7 @@
 
     <!-- Add your site or application content here -->
     @include('front.layouts.header')
-   @yield('content')
+    @yield('content')
    
     @include('front.layouts.footer')
     @include('front.layouts.js')
