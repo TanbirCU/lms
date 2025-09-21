@@ -30,7 +30,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="module-table-body">
                         @foreach ($modules as $module)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -39,10 +39,16 @@
                                 <td>{{ $module->description }}</td>
                                 <td>
                                     <a href="{{ route('admin.modules.edit', $module->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                    <form action="{{ route('admin.modules.destroy', $module->id) }}" method="POST" style="display:inline-block;">
+                                    <form id="deleteForm_{{ $module->id }}" 
+                                        action="{{ route('admin.modules.destroy', $module->id) }}" 
+                                        method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this module?')">Delete</button>
+                                        <button type="button" 
+                                                onclick="confirmDelete({{ $module->id }})" 
+                                                class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -60,35 +66,14 @@
 <script>
     $(document).ready(function () {
         $('#courseFilter').change(function () {
-            let courseId = $(this).val();
-
+            let courseId = $("#courseFilter").val();
             $.ajax({
-                url: "{{ route('admin.lessons.byCourse') }}",
+                url: "{{ route('admin.courses.index') }}",
                 type: 'GET',
                 data: { course_id: courseId },
                 success: function (response) {
-                    let rows = '';
+                    $('#module-table-body').html(data);
 
-                    if (response.length > 0) {
-                        response.forEach(function (lesson) {
-                            rows += `
-                                <tr>
-                                    <td>${lesson.title}</td>
-                                    <td>${lesson.lesson_date}</td>
-                                    <td>${lesson.lesson_time}</td>
-                                    <td>${lesson.zoom_link ? `<a href="${lesson.zoom_link}" target="_blank">Join</a>` : 'N/A'}</td>
-                                </tr>
-                            `;
-                        });
-                    } else {
-                        rows = `
-                            <tr>
-                                <td colspan="4" class="text-center">No lessons found for this course.</td>
-                            </tr>
-                        `;
-                    }
-
-                    $('#lessonsTable tbody').html(rows);
                 },
                 error: function () {
                     alert("Something went wrong while fetching lessons.");

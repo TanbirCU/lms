@@ -14,12 +14,19 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['modules'] = Module::with('course')->get();
+        $query = Module::with('course');
+
+       if ($request->course_id) {
+            $query->where('course_id', $request->course_id);
+        }
+        $data['modules'] = $query->get();
         $data['courses'] = Course::all();
+
         return view('dashboard.admin.course_modules.index', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -71,7 +78,9 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['module'] = Module::findOrFail($id);
+        $data['courses'] = Course::all();
+        return view('dashboard.admin.course_modules.edit', $data);
     }
 
     /**
@@ -83,7 +92,17 @@ class ModuleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'module_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'position' => 'nullable|integer',
+        ]);
+
+        $module = Module::findOrFail($id);
+        $module->update($request->only('course_id', 'module_name', 'description', 'position'));
+
+        return response()->json(['message' => 'Module updated successfully.']);
     }
 
     /**
@@ -96,6 +115,6 @@ class ModuleController extends Controller
     {
         $module = Module::findOrFail($id);
         $module->delete();
-        return redirect()->route('admin.modules.index')->with('success', 'Module deleted successfully.');
+        return redirect()->route('admin.modules.index')->with('message', 'Module deleted successfully.');
     }
 }
