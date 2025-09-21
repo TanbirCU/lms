@@ -12,9 +12,7 @@ class EnrollmentController extends Controller
 {
     public function enrollCourse($id)
     {
-
         $courseEnrollment = Course::findOrFail($id);
-
         return view('front.course.course_enrollment', compact('courseEnrollment'));
     }
 
