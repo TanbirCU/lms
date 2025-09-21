@@ -1,17 +1,17 @@
 @extends('dashboard.master')
 
-@section('title', 'Add Lesson')
+@section('title', 'Add Module')
 
 @section('content')
    <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Add New Lesson for a Course</h4>
-                <p class="">Here You Will Add New Lesson.</p>
+                <h4 class="card-title">Add New Module for a Course</h4>
+                <p class="">Here You Will Add New Module.</p>
 
                 {{-- Start Form --}}
-                <form id="lessonAdd" action="{{ route('admin.lessons.store') }}" method="post" enctype="multipart/form-data" class="mt-5">
+                <form id="moduleAdd" action="{{ route('admin.modules.store') }}" method="post" enctype="multipart/form-data" class="mt-5">
                     @csrf
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -27,22 +27,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="module-select" class="col-md-2 col-form-label">Select Module</label>
-                                <div class="col-md-10">
-                                    <select class="form-control select2-multiple" name="module_id" id="module-select" required>
-                                        <option value="">Select a module</option>
-                                        @foreach($modules as $module)
-                                            <option value="{{ $module->id }}">{{ $module->module_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            
 
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-md-2 col-form-label">Lesson Title</label>
+                                <label for="example-text-input" class="col-md-2 col-form-label">Module Name</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" name="title" value="" id="example-text-input">
+                                    <input class="form-control" type="text" name="module_name" value="" id="example-text-input">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -50,19 +40,14 @@
                                 <div class="col-md-10">
                                     <textarea class="form-control" name="description" id="example-textarea-input" rows="3"></textarea>
                                 </div>
-                            </div>  
+                            </div> 
                             <div class="form-group row">
-                                <label for="lesson-date" class="col-md-2 col-form-label">Lesson Date</label>
+                                <label for="position-input" class="col-md-2 col-form-label">Position</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="date" name="lesson_date" id="lesson-date" required>
-                                </div>      
-                            </div>
-                            <div class="form-group row">
-                                <label for="lesson-time" class="col-md-2 col-form-label">Lesson Time</label>
-                                <div class="col-md-10">
-                                    <input class="form-control" type="time" name="lesson_time" id="lesson-time" required>
+                                    <input class="form-control" type="number" name="position" value="" id="position-input">
                                 </div>
-                            </div>
+                            </div> 
+                            
                             {{-- Zoom Link --}}
                             
                             
@@ -95,12 +80,12 @@
                 placeholder: "Select an option",
                 allowClear: true
             });
-             ajaxFormSubmitJQ('#courseAdd', {
-                url: "{{ route('admin.courses.store') }}", // ✅ Or use '/teacher/add'
+             ajaxFormSubmitJQ('#moduleAdd', {
+                url: "{{ route('admin.modules.store') }}",
                 method: 'POST',
                 onSuccess: function (response) {
-                    window.location.href = "{{ route('admin.courses.index') }}";
-                    toastr.success(response.message || 'Course added successfully!');
+                    window.location.href = "{{ route('admin.modules.index') }}";
+                    toastr.success(response.message || 'Module added successfully!');
                 }
             });
         });

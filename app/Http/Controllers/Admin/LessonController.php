@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Module;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Course; // Assuming you have a Course model
 use App\Models\Lesson; // Assuming you have a Course model
 use App\Services\ZoomService; // Assuming you have a ZoomService for handling Zoom API interactions
+
 class LessonController extends Controller
 {
     /**
@@ -37,6 +39,7 @@ class LessonController extends Controller
     public function create()
     {
         $data['courses'] = Course::all();
+        $data['modules'] = Module::all();
         return view('dashboard.admin.lessons.create', $data);
     }
 

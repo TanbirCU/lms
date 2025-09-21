@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     use HasFactory;
+    protected $fillable = ['course_id', 'module_name', 'description', 'position'];
+    public function course()
+    {
+        return $this->belongsTo(Course::class)->select('id', 'course_name');
+    }
 }
