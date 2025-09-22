@@ -19,7 +19,7 @@
                             <div class="form-group row">
                                 <label for="course-select" class="col-md-2 col-form-label">Select Course</label>
                                 <div class="col-md-10">
-                                    <select class="form-control select2-multiple" name="course_id" id="course-select" required>
+                                    <select class="form-control" name="course_id" id="course-select" required>
                                         <option value="">Select a course</option>
                                         @foreach($courses as $course)
                                             <option value="{{ $course->id }}">{{ $course->course_name }}</option>
@@ -30,10 +30,12 @@
                             <div class="form-group row">
                                 <label for="module-select" class="col-md-2 col-form-label">Select Module</label>
                                 <div class="col-md-10">
-                                    <select class="form-control select2-multiple" name="module_id" id="module-select" required>
+                                    <select class="form-control" name="module_id" id="module-select" required>
                                         <option value="">Select a module</option>
                                         @foreach($modules as $module)
-                                            <option value="{{ $module->id }}">{{ $module->module_name }}</option>
+                                            <option value="{{ $module->id }}" data-course="{{ $module->course_id }}">
+                                                {{ $module->module_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -87,6 +89,22 @@
 
 @push('js')
     <script>
+        document.getElementById('course-select').addEventListener('change', function () {
+            let selectedCourse = this.value;
+            let moduleSelect = document.getElementById('module-select');
+ 
+            Array.from(moduleSelect.options).forEach(option => {
+                if (option.value === "") {
+                    option.style.display = "block"; // default option visible
+                } else {
+                    option.style.display = (option.getAttribute("data-course") === selectedCourse) ? "block" : "none";
+                }
+            });
+
+            // প্রথম option সিলেক্ট করানো
+            moduleSelect.value = "";
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             initImagePreview('#image-input');
         });

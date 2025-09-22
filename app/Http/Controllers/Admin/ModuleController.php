@@ -18,9 +18,14 @@ class ModuleController extends Controller
     {
         $query = Module::with('course');
 
-       if ($request->course_id) {
+        if ($request->course_id) {
             $query->where('course_id', $request->course_id);
         }
+        
+        if ($request->ajax()) {
+             $query->where('course_id',$request->course_id);
+        }
+        
         $data['modules'] = $query->get();
         $data['courses'] = Course::all();
 

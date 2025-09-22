@@ -18,14 +18,15 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $data['lessons'] = Lesson::all(); 
-        $data['courses'] = Course::all(); // Fetch all courses for the dropdown
+        $data['lessons'] = Lesson::with('module')->get(); 
+
+        $data['courses'] = Course::all(); 
         return view('dashboard.admin.lessons.index',$data);
     }
 
     public function getByCourse(Request $request)
     {
-        $lessons = Lesson::where('course_id', $request->course_id)->get();
+        $lessons = Lesson::where('course_id', $request->course_id)->with('module')->get();
 
         return response()->json($lessons);
     }

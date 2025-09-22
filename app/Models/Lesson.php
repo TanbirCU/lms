@@ -29,4 +29,8 @@ class Lesson extends Model
     {
         return now()->lt($this->lesson_date . ' ' . $this->lesson_time);
     }
+    public function module()
+    {
+        return $this->belongsTo(Module::class);
+    }
 }

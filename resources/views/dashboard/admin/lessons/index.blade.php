@@ -1,14 +1,14 @@
 @extends('dashboard.master')
 
-@section('title', 'Course List')
+@section('title', 'Lessons List')
 
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Course List</h4>
-                <p>Here You Will See Course List.</p>
+                <h4 class="card-title">Lessons List</h4>
+                <p>Here You Will See Lessons List.</p>
 
                 <div class="mb-3">
                     <label for="courseFilter" class="form-label">Filter by Course</label>
@@ -23,6 +23,7 @@
                 <table id="lessonsTable" class="table table-bordered mt-3">
                     <thead>
                         <tr>
+                            <th>Module</th>
                             <th>Title</th>
                             <th>Date</th>
                             <th>Time</th>
@@ -32,6 +33,7 @@
                     <tbody>
                         @foreach ($lessons as $lesson)
                             <tr>
+                                <td>{{ $lesson->module->module_name }}</td>
                                 <td>{{ $lesson->title }}</td>
                                 <td>{{ $lesson->lesson_date }}</td>
                                 <td>{{ $lesson->lesson_time }}</td>
@@ -70,6 +72,7 @@
                         response.forEach(function (lesson) {
                             rows += `
                                 <tr>
+                                    <td>${lesson.module.module_name}</td>
                                     <td>${lesson.title}</td>
                                     <td>${lesson.lesson_date}</td>
                                     <td>${lesson.lesson_time}</td>

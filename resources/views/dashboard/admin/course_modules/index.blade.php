@@ -15,7 +15,9 @@
                     <select id="courseFilter" class="form-select">
                         <option value="">-- Select Course --</option>
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                            <option value="{{ $course->id }}" >
+                                {{ $course->course_name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -34,8 +36,8 @@
                         @foreach ($modules as $module)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $module->module_name }}</td>
                                 <td>{{ $module->course->course_name }}</td>
+                                <td>{{ $module->module_name }}</td>
                                 <td>{{ $module->description }}</td>
                                 <td>
                                     <a href="{{ route('admin.modules.edit', $module->id) }}" class="btn btn-sm btn-primary">Edit</a>
@@ -66,20 +68,27 @@
 <script>
     $(document).ready(function () {
         $('#courseFilter').change(function () {
-            let courseId = $("#courseFilter").val();
+            let courseId = $(this).val();
+            
             $.ajax({
-                url: "{{ route('admin.courses.index') }}",
+                url: "{{ route('admin.modules.index') }}",
                 type: 'GET',
                 data: { course_id: courseId },
                 success: function (response) {
-                    $('#module-table-body').html(data);
-
+                    // Extract the HTML content from the response
+                    let filteredModules = $(response).find('#module-table-body').html();
+                    
+                    // Update the table body with filtered modules
+                    $('#module-table-body').html(filteredModules);
                 },
-                error: function () {
-                    alert("Something went wrong while fetching lessons.");
+                error: function (xhr) {
+                    console.error("Error:", xhr);
+                    alert("Something went wrong while fetching modules.");
                 }
             });
         });
+        
+       
     });
 </script>
 @endpush
