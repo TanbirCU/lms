@@ -18,10 +18,14 @@ class Course extends Model
     {
         return $this->belongsToMany(Teacher::class);
     }
-    public function lessons()
+    public function modules()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Module::class);
     }
+    // public function lessons()
+    // {
+    //     return $this->hasMany(Lesson::class);
+    // }
 
 
 }

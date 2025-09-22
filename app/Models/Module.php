@@ -13,4 +13,9 @@ class Module extends Model
     {
         return $this->belongsTo(Course::class)->select('id', 'course_name');
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

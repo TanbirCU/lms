@@ -54,6 +54,7 @@ class LessonController extends Controller
     {
         $request->validate([
             'course_id'    => 'required|exists:courses,id',
+            'module_id'    => 'required|exists:modules,id',
             'title'        => 'required|string|max:255',
             'lesson_date'  => 'required|date',
             'lesson_time'  => 'required',
@@ -70,6 +71,7 @@ class LessonController extends Controller
 
         Lesson::create([
             'course_id'       => $request->course_id,
+            'module_id'       => $request->module_id,
             'title'           => $request->title,
             'description'     => $request->description,
             'lesson_date'     => $request->lesson_date,
@@ -79,7 +81,7 @@ class LessonController extends Controller
             'zoom_meeting_id' => $zoom['id'] ?? null,
         ]);
 
-        return redirect()->route('admin.courses.index')
+        return redirect()->route('admin.lessons.index')
                         ->with('message', 'Lesson & Zoom meeting created successfully!');
     }
 
