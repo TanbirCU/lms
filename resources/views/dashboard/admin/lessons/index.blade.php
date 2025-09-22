@@ -28,6 +28,7 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Zoom Link</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,20 @@
                                     @else
                                         N/A
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.lessons.edit', $lesson->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <form id="deleteForm_{{ $lesson->id }}" 
+                                        action="{{ route('admin.lessons.destroy', $lesson->id) }}" 
+                                        method="POST" style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" 
+                                                onclick="confirmDelete({{ $lesson->id }})" 
+                                                class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -77,6 +92,20 @@
                                     <td>${lesson.lesson_date}</td>
                                     <td>${lesson.lesson_time}</td>
                                     <td>${lesson.zoom_link ? `<a href="${lesson.zoom_link}" target="_blank">Join</a>` : 'N/A'}</td>
+                                    <td>
+                                        <a href="/admin/lessons/${lesson.id}/edit" class="btn btn-sm btn-primary">Edit</a>
+                                        <form id="deleteForm_${lesson.id}" 
+                                            action="/admin/lessons/${lesson.id}" 
+                                            method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" 
+                                                    onclick="confirmDelete(${lesson.id})" 
+                                                    class="btn btn-sm btn-danger">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             `;
                         });
