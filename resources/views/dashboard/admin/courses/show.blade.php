@@ -48,10 +48,15 @@
                                 <!-- Modules Loop -->
                                 @foreach($course->modules as $index => $module)
                                 <div class="module-card">
-                                    <div class="module-header {{ $index > 0 ? 'collapsed' : '' }}" data-bs-toggle="collapse" href="#module{{ $module->id }}">
+                                    <div class="module-header {{ $index > 0 ? 'collapsed' : '' }}" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#module{{ $module->id }}" 
+                                        aria-expanded="{{ $index === 0 ? 'true' : 'false' }}" 
+                                        aria-controls="module{{ $module->id }}">
                                         <h5 class="mb-0">{{ $module->module_name }}</h5>
                                         <span class="arrow-icon"><i class="fas fa-chevron-down"></i></span>
                                     </div>
+
                                     <div class="collapse {{ $index === 0 ? 'show' : '' }}" id="module{{ $module->id }}">
                                         <div class="module-content">
                                             <p class="text-muted">{{ $module->description }}</p>
@@ -108,188 +113,194 @@
 </div>
 @endsection
 
+@push('css')
+        
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #6f42c1;
+            --accent-color: #36b9cc;
+            --light-bg: #f8f9fc;
+            --dark-text: #5a5c69;
+        }
 
-<style>
-:root {
-    --primary-color: #4e73df;
-    --secondary-color: #6f42c1;
-    --accent-color: #36b9cc;
-    --light-bg: #f8f9fc;
-    --dark-text: #5a5c69;
-}
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark-text);
+        }
 
-body {
-    background-color: var(--light-bg);
-    font-family: 'Nunito', sans-serif;
-    color: var(--dark-text);
-}
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
 
-.course-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+        .course-image {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            width: 100%;
+            max-height: 250px;
+        }
 
-.course-image {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-    width: 100%;
-    max-height: 250px;
-}
+        .module-card {
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
 
-.module-card {
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
+        .module-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
 
-.module-card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
+        .module-header {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.module-header {
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .module-header.collapsed .arrow-icon {
+            transform: rotate(0deg);
+        }
 
-.module-header.collapsed .arrow-icon {
-    transform: rotate(0deg);
-}
+        .module-header .arrow-icon {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
 
-.module-header .arrow-icon {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
-}
+        .module-content {
+            padding: 20px;
+            background-color: #f8fafc;
+            border-top: 1px solid #e9ecef;
+            border-radius: 0 0 10px 10px;
+        }
 
-.module-content {
-    padding: 20px;
-    background-color: #f8fafc;
-    border-top: 1px solid #e9ecef;
-    border-radius: 0 0 10px 10px;
-}
+        .teacher-badge {
+            background-color: #e9f7ff;
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
 
-.teacher-badge {
-    background-color: #e9f7ff;
-    color: var(--primary-color);
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    display: inline-block;
-}
+        .back-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
+            transition: all 0.3s ease;
+        }
 
-.back-btn {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    border: none;
-    border-radius: 50px;
-    padding: 10px 25px;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(37, 117, 252, 0.3);
-    transition: all 0.3s ease;
-}
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 117, 252, 0.4);
+        }
 
-.back-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(37, 117, 252, 0.4);
-}
+        .description-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
 
-.description-box {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
 
-.section-title {
-    color: #2c3e50;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
+        /* ----------- LESSON DESIGN ----------- */
+        .lessons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-/* ----------- LESSON DESIGN ----------- */
-.lessons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        .lesson-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
 
-.lesson-card {
-    background: white;
-    border-radius: 10px;
-    padding: 15px 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--accent-color);
-}
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
 
-.lesson-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-}
+        .lesson-header {
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 8px;
+        }
 
-.lesson-header {
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 8px;
-}
+        .lesson-title {
+            font-size: 1rem;
+            color: var(--dark-text);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
 
-.lesson-title {
-    font-size: 1rem;
-    color: var(--dark-text);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-}
+        .lesson-title .lesson-icon {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
 
-.lesson-title .lesson-icon {
-    color: var(--accent-color);
-    font-size: 1.2rem;
-    margin-right: 8px;
-}
+        .lesson-body {
+            padding-top: 10px;
+        }
 
-.lesson-body {
-    padding-top: 10px;
-}
+        .lesson-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
 
-.lesson-description {
-    font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 10px;
-}
+        .lesson-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #495057;
+        }
 
-.lesson-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    font-size: 0.85rem;
-    color: #495057;
-}
+        .lesson-meta i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+    </style>
+@endpush
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-.lesson-meta i {
-    color: var(--primary-color);
-    margin-right: 5px;
-}
-</style>
-
-<script>
-    // Toggle arrow animation
-    document.querySelectorAll('.module-header').forEach(header => {
-        header.addEventListener('click', () => {
-            header.classList.toggle('collapsed');
+    <script>
+        // Toggle arrow animation
+        document.querySelectorAll('.module-header').forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('collapsed');
+            });
         });
-    });
-</script>
+    </script>
+@endpush
+

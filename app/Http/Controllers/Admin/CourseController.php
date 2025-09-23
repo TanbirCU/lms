@@ -84,7 +84,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::with('teachers','modules','modules.lessons')->findOrFail($id);
-       
+    
         return view('dashboard.admin.courses.show', compact('course'));
     }
 
