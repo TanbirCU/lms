@@ -73,21 +73,18 @@ class PaymentController extends Controller
 
     public function paymentSuccess(Request $request)
     {
-        // Retrieve session data
         $postData = session()->get('payment_data');
 
         if (!$postData) {
             return "Session expired or payment data missing!";
         }
 
-        // Validate payment using SSLCommerz API
         $validationUrl = "https://sandbox.sslcommerz.com/validator/api/validationserverAPI.php?val_id={$request->val_id}&store_id=" . env('SSLC_STORE_ID') . "&store_passwd=" . env('SSLC_STORE_PASSWORD') . "&v=1&format=json";
 
         $response = file_get_contents($validationUrl);
         $validationResponse = json_decode($response, true);
 
         if ($validationResponse['status'] === 'VALID') {
-            // Store payment data in the database
             Payment::create([
                 'transaction_id' => $validationResponse['tran_id'],
                 'amount' => $validationResponse['amount'],
