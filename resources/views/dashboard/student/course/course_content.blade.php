@@ -22,7 +22,7 @@
                                         </p>
                                     </div>
                                     <div class="card-footer bg-transparent border-0">
-                                        <a href="{{ route('student.course_content', $course->id) }}" class="btn btn-sm btn-primary w-100">Go to Content</a>
+                                        <a href="{{ route('student.course_content_details', $course->id) }}" class="btn btn-sm btn-primary w-100">Go to Content</a>
                                     </div>
                                 </div>
                             </div>

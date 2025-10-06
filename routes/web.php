@@ -45,6 +45,7 @@ Route::prefix('student')->group(function () {
 
         Route::get('/enrolled-courses', [EnrollmentController::class, 'enrolledCourses'])->name('student.enrolled_courses');
         Route::get('/course-content/{id}', [EnrollmentController::class, 'courseContent'])->name('student.course_content');
+        
     });
 
 });
