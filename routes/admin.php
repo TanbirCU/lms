@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminAddController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminTeacherController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\DatabaseBackupController;
 use App\Http\Controllers\Admin\ModuleController;
 
 Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -34,5 +35,6 @@ Route::middleware('auth:admin')->group(function () {
 
 
     Route::resource('/students',StudentController::class)->names('students');
-
+    // database download
+    Route::get('/database-download', [DatabaseBackupController::class, 'downloadDatabase'])->name('database.download');
 });

@@ -93,10 +93,18 @@
 
                         </div>
 
-
-                      <a href="{{ route('home') }}" class="btn btn-success d-inline-flex align-items-center">
-                            <i class="bx bx-home font-size-16 me-2"></i> Home Page
-                        </a>
+                        @if(auth()->guard('admin')->check())
+                            <div class="d-inline-block mr-2 mt-3">
+                                <a href="{{ route('admin.database.download') }}" class="btn btn-success d-inline-flex align-items-center">
+                                    <i class="bx bx-data font-size-16 me-2 "></i> Database Download 
+                                </a>    
+                            </div>
+                        @endif
+                        <div class="d-inline-block mt-3">
+                            <a href="{{ route('home') }}" class="btn btn-success d-inline-flex align-items-center">
+                                <i class="bx bx-home font-size-16 me-2"></i> Home Page
+                           </a>
+                        </div>
 
 
                         <div class="dropdown d-inline-block">
